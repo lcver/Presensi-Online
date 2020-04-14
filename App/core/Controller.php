@@ -21,9 +21,7 @@ class Controller
                 'Template/header',
                 'Template/navbar',
                 'Template/sidebar',
-                'Template/contentHeader',
                 $view,
-                'Template/contentFooter',
                 'Template/footer'
             ];
         }
