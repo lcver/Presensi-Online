@@ -8,4 +8,4 @@ define('BASEPATH',BASEURL.'../');
 define('DBHOST', 'localhost');
 define('DBUSER', 'root');
 define('DBPASS', '');
-define('DBNAME', 'db_elenka');
+define('DBNAME', 'db_presensi_ppg');

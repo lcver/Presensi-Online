@@ -16,6 +16,15 @@ class Controller
         if($category==="self")
         {
             $template=[$view];
+        }elseif($category==="peserta"){
+            $template = [
+                'Template/peserta/header',
+                'Template/peserta/navbar',
+                'Template/peserta/contentHeader',
+                $view,
+                'Template/peserta/contentFooter',
+                'Template/peserta/footer'
+            ];
         }else{
             $template = [
                 'Template/header',
