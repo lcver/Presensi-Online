@@ -22,11 +22,10 @@ class HomeController extends Controller
         $res = $this->model('PesertaModel')->store($postData);
         if($res===true)
         {
-            Flasher::setFlash('Berhasil : '.$_POST['presensi_nama'],true);
+            Flasher::setFlash("Berhasil",true);
         }else{
             Flasher::setFlash('Gagal',false);
         }
         header('location:'.BASEURL);
-    }
-    
+    }   
 }

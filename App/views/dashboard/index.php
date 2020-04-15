@@ -43,8 +43,6 @@
     <!-- /.row -->
 </div>
 <!-- /.card -->
-    <script>
-        window.onload = function(event) {
-            pieChart();
-        };
-    </script>
+<script>
+    window.onload = function(event) {pieChart()}
+</script>
