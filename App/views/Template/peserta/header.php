@@ -9,8 +9,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Elenka</title>
+  <title>PPG Jakarta Pusat</title>
 
+  <!-- favicon -->
+  <link rel="shortcut icon" href="<?=BASEURL?>img/logoPPG.jpeg" type="image/x-icon">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
