@@ -25,6 +25,14 @@ class Controller
                 'Template/peserta/contentFooter',
                 'Template/peserta/footer'
             ];
+        }elseif ($category==="admin") {
+            $template = [
+                'Template/header',
+                'Template/navbar',
+                'Template/sidebar',
+                $view,
+                'Template/footer'
+            ];
         }else{
             $template = [
                 'Template/peserta/header',
