@@ -29,7 +29,7 @@ class PengurusController extends Controller
         // var_dump($data['jumlahdata']);
         // die();
 
-        $this->view('dashboard/index',$data);
+        $this->view('dashboard/index',$data,'pengurus');
     }
 
     public function tpq()

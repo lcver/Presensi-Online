@@ -27,10 +27,11 @@ class Controller
             ];
         }else{
             $template = [
-                'Template/header',
-                'Template/navbar',
-                'Template/sidebar',
+                'Template/peserta/header',
+                'Template/peserta/navbar',
+                'Template/peserta/contentHeader',
                 $view,
+                'Template/peserta/contentFooter',
                 'Template/footer'
             ];
         }
