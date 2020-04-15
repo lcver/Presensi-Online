@@ -18,5 +18,18 @@
         </div>
       </div>
     </form> -->
+
+    <div class="navbar-nav ml-auto">
+        <?php if(isset($_SESSION['presensi_adminsession'])) : ?>
+        <li class="nav-item dropdown">
+            <a href="" class="nav-link text-danger">
+              logout
+            </a>
+        </li>
+        <!-- <li class="nav-item"></li> -->
+        <!-- <li class="nav-item">
+        </li> -->
+        <?php endif; ?>
+    </div>
   </nav>
   <!-- /.navbar -->
