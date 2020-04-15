@@ -7,7 +7,7 @@
                 <h5>PPG Jakarta Pusat</h5>
             </div>
         </div>
-        <?=Flasher::get()?>
+        <?= Flasher::get(); ?>
         <form action="<?=BASEURL?>home/submitData" method="post">
             <div class="card">
                 <div class="card-body">

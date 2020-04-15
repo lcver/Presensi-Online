@@ -34,20 +34,12 @@
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/chart.js/Chart.min.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/demo.js"></script>
-<!-- FLOT CHARTS -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/flot/jquery.flot.js"></script>
-<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/flot-old/jquery.flot.resize.min.js"></script>
-<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/flot-old/jquery.flot.pie.min.js"></script>
 <script>
   function pieChart()
   {
