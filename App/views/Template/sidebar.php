@@ -25,9 +25,15 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?=BASEURL?>pengurus" class="nav-link">
+            <a href="<?=BASEURL?>admin" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p class="text">Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?=BASEURL?>admin/jadwal" class="nav-link">
+              <i class="nav-icon fas fa-book-open"></i>
+              <p class="text">Jadwal</p>
             </a>
           </li>
           <!-- <li class="nav-header">LABELS</li>
