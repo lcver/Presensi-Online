@@ -13,12 +13,18 @@ class SesiModel extends Controller
      * 
      * create view resource data
      */
-    public function create(){}
+    public function create(){
+        return Database::table('tbpresensi_sesi')
+                                    ->orderBy('sesi','asc')
+                                    ->get();
+    }
         /**
          * 
          * stored new resourece data
          */
-        public function store(){}
+        public function store(array $request){
+            return Database::table('tbpresensi_sesi')->insert($request);
+        }
             /**
              * 
              * display the specified resource data
