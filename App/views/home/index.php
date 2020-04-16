@@ -3,7 +3,7 @@
         <div class="card bg-transparent shadow-none">
             <div class="text-center">
                 <img src="<?=BASEURL?>img/logoPPG.jpeg" alt="" class="img-thumbnail img-circle p-0" style="max-width:100px">
-                <h3>Presensi Online Asrama Remaja Jakarta Pusat</h3>
+                <h3>Presensi Online Asrama PPG Jakarta Pusat</h3>
                 <h5>PPG Jakarta Pusat</h5>
             </div>
         </div>

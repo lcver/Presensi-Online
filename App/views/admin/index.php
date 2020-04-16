@@ -1,5 +1,5 @@
 <?php if($data['activated']!==null) : ?>
-<div class="col-md-6" id="card-active">
+<div class="col-md-7" id="card-active">
     <div class="card">
         <div class="card-body">
             <table class="table table-striped">
@@ -8,9 +8,10 @@
                     <tr>
                         <td><?=$d['sesi']?></td>
                         <td><?= date_format(date_create($d['tanggal']),'d F Y')?></td>
-                        <td>Sesi sedang aktif</td>
+                        <td>Sedang aktif</td>
                         <td>
-                            <button class="btn btn-danger" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/inactive_jadwal')" >Inactive</button>
+                            <!-- <button class="btn btn-light" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/inactive_jadwal')" >pause</button> -->
+                            <button class="btn btn-danger" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/inactive_jadwal')" >selesai</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
