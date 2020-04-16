@@ -157,6 +157,11 @@ class AdminController extends Controller
         $this->view('admin/jadwal',$data,'admin');
     }
 
+    public function jadwal_detail()
+    {
+        $this->view('admin/jadwal_detail',[],'admin');
+    }
+
     public function set_jadwal()
     {
         $data = [
@@ -210,6 +215,19 @@ class AdminController extends Controller
             $res = $this->model('SuperadminModel')->update($_POST['id'],$data);
             if($res!==true){
                 echo "isn't switch";
+            }
+        }
+    }
+
+    public function delete_jadwal()
+    {
+        if(isset($_SESSION['presensi_adminsession']))
+        {
+            $condition = ['id'=>$_POST['id']];
+            $res = $this->model('SesiModel')->destroy($condition);
+            if($res!==true)
+            {
+                echo "isn't delete jadwal";
             }
         }
     }
