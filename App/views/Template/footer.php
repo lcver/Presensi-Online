@@ -41,9 +41,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/demo.js"></script>
 <script>
-  function pieChart()
+  function pieChart(api)
   {
-    $.get('http://localhost/project/Abdar/public/pengurus/jumlah', function(data) {  
+    // 'http://localhost/project/Abdar/public/pengurus/jumlah'
+    $.get(api, function(data) {  
         var requestData = $.parseJSON(data);
       /* ChartJS
       * -------
