@@ -1,32 +1,74 @@
-<div class="col-md-4">
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">Set jadwal</h4>
-    </div>
-    <div class="card-body">
-        <div class="col-md-12">
-            <div class="form-group">
-                <form action="<?=BASEURL?>admin/set_jadwal" method="post">
-                    <div class="form-group">
-                        <label for="">Nama Acara : </label>
-                        <input class="form-control d-inline" type="text" name="presensi_sesi">
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Set jadwal</h4>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <form action="<?=BASEURL?>admin/set_jadwal" method="post">
+                                <div class="form-group">
+                                    <label for="">Nama Acara : </label>
+                                    <input class="form-control d-inline" type="text" name="presensi_sesi">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tanggal</label>
+                                    <input class="form-control d-inline dateform" type="date" name="presensi_tanggal" required>
+                                    <label for="">Mulai :</label>
+                                    <input class="form-control timepicker-minute" type="time" name="presensi_waktu_mulai" required>
+                                    <label for="">Selesai :</label>
+                                    <input class="form-control timepicker-minute" type="time" name="presensi_waktu_selesai" required>
+                                </div>
+                                <button class="btn btn-primary float-right">Set Tanggal</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="">Tanggal</label>
-                        <input class="form-control d-inline dateform" type="date" name="presensi_tanggal" required>
-                        <label for="">Mulai :</label>
-                        <input class="form-control timepicker-minute" type="time" name="presensi_waktu_mulai" required>
-                        <label for="">Selesai :</label>
-                        <input class="form-control timepicker-minute" type="time" name="presensi_waktu_selesai" required>
-                    </div>
-                    <button class="btn btn-primary float-right">Set Tanggal</button>
-                </form>
+                </div>
             </div>
+            <!-- /.card -->
         </div>
+        <!-- /.col -->
+
+        <!-- <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Set jadwal</h4>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <form action="<?php//BASEURL?>admin/set_jadwal" method="post">
+                                <ul class="list-unstyled m-0">
+                                    <li>
+                                        <span>Sesi 1 : 08.00 ~ 09.30</span>
+                                    </li>
+                                    <li>
+                                        <span>Sesi 2 : 10.15 ~ 11.30</span>
+                                    </li>
+                                    <li>
+                                        <span>Sesi 3 : 01.30 ~ 02.30</span>
+                                    </li>
+                                    <li>
+                                        <span>Sesi 3 : 20.00 ~ 21.30</span>
+                                    </li>
+                                </ul>
+                                <div class="form-group">
+                                    <label for="">Tanggal</label>
+                                    <input class="form-control d-inline dateform" type="date" name="presensi_tanggal" required>
+                                </div>
+                                <button class="btn btn-primary float-right">Set jadwal</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            /.card
+        </div> -->
+        <!-- /.col -->
     </div>
 </div>
-</div>
-
 <div class="card">
     <div class="card-header">
         <h4 class="card-title">Presensi Asrama</h4>
