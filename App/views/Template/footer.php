@@ -65,7 +65,7 @@
           {
             // data: [1,0,2,0,1,0,0,3],
             data: requestData,
-            backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', 'green','blue'],
+            backgroundColor : ['#6a8caf','#4baea0','#f67280','#99d8d0','#be9fe1','#eb8242','#9cf196','#484c7f'],
           }
         ]
       }

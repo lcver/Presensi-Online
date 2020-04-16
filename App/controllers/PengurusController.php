@@ -9,6 +9,7 @@ class PengurusController extends Controller
         $data['subtitlepage'] = "Prepensi Online Asrama Al-quran PPG Jakarta Pusat";
         $dataTPQ = $this->model('TpqModel')->create();
         $resData=[];
+        $total=0;
         foreach ($dataTPQ as $d) {
             $dataPeserta = $this->model('PesertaModel')->show($d['id']);
             $data['tpq'][] = ['tpq'=>$d['tpq'],'desa'=>$d['desa']];
@@ -19,6 +20,8 @@ class PengurusController extends Controller
                     'idtpq'=> $d['id'],
                     'jumlah'=>$countData
                 ];
+                $subtotal = $countData;
+                $total += $subtotal;
             }else{
                 $resData[] = [
                     'idtpq'=> $d['id'],
@@ -26,6 +29,7 @@ class PengurusController extends Controller
                 ];
             }
         }
+        $data['total'] = $total;
         $data['jumlahdata'] = $resData;
         // var_dump($data['jumlahdata']);
         // die();
