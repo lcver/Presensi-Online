@@ -71,5 +71,8 @@ class SesiModel extends Controller
                          * 
                          * remove specified resource data
                          */
-                        public function destroy($id){}
+                        public function destroy($id){
+                            return Database::table('tbpresensi_sesi')
+                                                    ->delete($id);
+                        }
 }

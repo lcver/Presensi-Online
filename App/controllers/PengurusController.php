@@ -11,7 +11,7 @@ class PengurusController extends Controller
         $resData=[];
         $total=0;
         foreach ($dataTPQ as $d) {
-            $dataPeserta = $this->model('PesertaModel')->show($d['id']);
+            $dataPeserta = $this->model('PesertaModel')->show('byIdTPQ',$d['id']);
             $data['tpq'][] = ['tpq'=>$d['tpq'],'desa'=>$d['desa']];
             if($dataPeserta!==NULL){
                 $countData = isset($dataPeserta['nama']) ? 1 : count($dataPeserta);
@@ -43,7 +43,7 @@ class PengurusController extends Controller
         $id = explode('/',$_GET['url']);
         $id = end($id);
         
-        $result = $this->model('PesertaModel')->show($id);
+        $result = $this->model('PesertaModel')->show('byIdTPQ',$id);
         if(!is_null($result)){
             $key = array_keys($result);
 

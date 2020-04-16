@@ -25,12 +25,35 @@ class PesertaModel extends Controller
              * 
              * display the specified resource data
              */
-            public function show($request){
-                return Database::table('tbpresensi_peserta')
-                                                ->where('idTpq',$request)
-                                                // ->join('tbpresensi_tpq')
-                                                // ->on('tbpresensi_tpq.id',"tbpresensi_peserta.idTpq and tbpresensi_peserta.idTpq =".$request)
+            public function show($request,$cond=null){
+                switch ($request) {
+                    case 'byIdTPQ':
+                        $result = Database::table('tbpresensi_peserta')
+                                                        ->where('idTpq',$cond)
+                                                        // ->join('tbpresensi_tpq')
+                                                        // ->on('tbpresensi_tpq.id',"tbpresensi_peserta.idTpq and tbpresensi_peserta.idTpq =".$request)
+                                                        ->get();
+                        break;
+                    case 'filtering' :
+                        $result = Database::table('tbpresensi_peserta')
+                                                ->raw(
+                                                    "nama='".$cond['nama']."'".
+                                                    " and jenis_kelamin='".$cond['jenis_kelamin']."'".
+                                                    " and idTpq='".$cond['idTpq']."'".
+                                                    " and idSesi='".$cond['idSesi']."'")
                                                 ->get();
+                        break;
+
+                    // case '' :
+                    // case '' :
+                        // break;
+                    
+                    default:
+                        $result = [];
+                        break;
+                }
+                
+                return $result;
             }
                 /**
                  * 

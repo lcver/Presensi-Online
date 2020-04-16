@@ -39,20 +39,37 @@ class HomeController extends Controller
 
     public function submitData()
     {
+        // filter nama
+        $nama = strtolower($_POST['presensi_nama']); // small word
+        $nama = ucwords($nama); // uppercase every first alphabet
+        $nama = explode(' ',$nama); // explode to array
+        $nama = preg_replace("/[^a-zA-Z]/", "", $nama); // check thread character
+        $nama = implode( ' ',$nama); // implode to string
+
         $postData = [
-            'nama'=>$_POST['presensi_nama'],
+            'nama'=>$nama,
             'jenis_kelamin'=>$_POST['presensi_jeniskelamin'],
             'idTpq'=>$_POST['presensi_tpq'],
             'idSesi'=>$_POST['presensi_sesi']
         ];
 
-        $res = $this->model('PesertaModel')->store($postData);
-        if($res===true)
+        $res = $this->model('PesertaModel')->show('filtering',$postData);
+        // var_dump($res);
+        // die();
+
+        if($res===null)
         {
-            Flasher::setFlash("Berhasil",true);
+            $res = $this->model('PesertaModel')->store($postData);
+            if($res===true)
+            {
+                Flasher::setFlash("Berhasil",true);
+            }else{
+                Flasher::setFlash('Gagal',false);
+            }
         }else{
-            Flasher::setFlash('Gagal',false);
+            Flasher::setFlash("Hanya satu kali absen",false);
         }
+
         header('location:'.BASEURL);
     }   
 }

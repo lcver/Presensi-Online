@@ -37,7 +37,7 @@
         <?php $no=1; foreach ($data as $d) :?>
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="alert alert-info alert-dismissible" >
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="delAjax(<?=$d['id']?>, 'Jadwal/hapus')" >&times;</button>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/delete_jadwal')" >&times;</button>
                     <span class="jadwal-card">
                         <i class="icon fas fa-calendar"></i>
                         <a href="<?=BASEURL?>admin/jadwal_detail/<?=$d['id']?>" class="text-lg">
