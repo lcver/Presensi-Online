@@ -29,7 +29,30 @@ class SesiModel extends Controller
              * 
              * display the specified resource data
              */
-            public function show(){}
+            public function show($request,$data=null){
+                switch ($request) {
+                    case 'get_active':
+                        $result = Database::table('tbpresensi_sesi')
+                                                        ->where('status',2)
+                                                        ->get();
+                        break;
+                    case 'set_active':
+                        $result = Database::table('tbpresensi_sesi')
+                                                        ->where('status',1)
+                                                        ->get();
+                        break;
+                    case 'byId':
+                        $result = Database::table('tbpresensi_sesi')
+                                                        ->where('id',$data)
+                                                        ->get();
+                        break;
+                    
+                    default:
+                        $result = [];
+                        break;
+                }
+                return $result;
+            }
                 /**
                  * 
                  * display form for editing resource data
@@ -39,7 +62,11 @@ class SesiModel extends Controller
                      * 
                      * update the specified resource data
                      */
-                    public function update($id){}
+                    public function update($id, $request){
+                        return Database::table('tbpresensi_sesi')
+                                                    ->where('id',$id)
+                                                    ->update($request);
+                    }
                         /**
                          * 
                          * remove specified resource data

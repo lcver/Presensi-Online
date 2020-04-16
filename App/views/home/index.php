@@ -8,7 +8,19 @@
             </div>
         </div>
         <?= Flasher::get(); ?>
+        <?php if(isset($data['sesi'])) : ?>
         <form action="<?=BASEURL?>home/submitData" method="post">
+            <div class="card">
+                <div class="card-body">
+                    <?php foreach ($data['sesi'] as $d) : ?>
+                        <h3>Presensi <?=$d['sesi']?> Tanggal : <?= date_format(date_create($d['tanggal']),'d F Y')?></h3>
+                        <p>Mulai <?=date_format(date_create($d['waktu_mulai']),'H:i')?> ~ Selesai <?=date_format(date_create($d['waktu_selesai']),'H:i')?></p>
+                        <div class="col-md-3">
+                            <input type="hidden" class="form-control" name="presensi_sesi" value="<?=$d['id']?>">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-body">
                     <div class="col-md-5">
@@ -44,7 +56,7 @@
                         <div class="form-group">
                             <label>Nama TPQ</label>
                             <select class="custom-select" name="presensi_tpq">
-                                <?php foreach ($data as $d) : ?>
+                                <?php foreach ($data['tpq'] as $d) : ?>
                                 <option value="<?=$d['id']?>"><?=$d['tpq']?> (<?=$d['desa']?>)</option>
                                 <?php endforeach; ?>
                             </select>
@@ -58,5 +70,12 @@
                 </div>
             </div>
         </form>
+        <?php else : ?>
+        <div class="card">
+            <div class="card-body">
+                Sesi Belum dimulai
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
 </div>

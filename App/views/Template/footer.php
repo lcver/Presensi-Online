@@ -88,6 +88,24 @@
       })
     });
   }
+
+  function ajax(data, req)
+  {
+    data = $(this).serialize();
+    $.ajax({
+      url : req,
+      type: 'POST',
+      data: data
+    });
+  }
+  function btnAjax(id, req)
+  {
+    // console.log('delete button');
+    $.post(req,
+        {id:id}
+    );
+    $('#card-active').addClass('d-none');
+  }
 </script>
 </body>
 </html>

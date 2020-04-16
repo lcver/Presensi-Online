@@ -1,11 +1,12 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+    <?php if(isset($data['subtitlepage'])) : ?>
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0 text-dark"> Prepensi Online Asrama Al-quran PPG Jakarta Pusat</h1>
+            <h1 class="m-0 text-dark"><?=$data['subtitlepage']?></h1>
           </div>
           <!-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -18,6 +19,7 @@
       </div>
     </div>
     <!-- /.content-header -->
+    <?php endif; ?>
 
     <!-- Main content -->
     <div class="content">

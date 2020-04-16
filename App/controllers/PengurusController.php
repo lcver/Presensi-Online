@@ -6,6 +6,7 @@ class PengurusController extends Controller
 {
     public function index()
     {
+        $data['subtitlepage'] = "Prepensi Online Asrama Al-quran PPG Jakarta Pusat";
         $dataTPQ = $this->model('TpqModel')->create();
         $resData=[];
         foreach ($dataTPQ as $d) {
