@@ -15,7 +15,7 @@ class SesiModel extends Controller
      */
     public function create(){
         return Database::table('tbpresensi_sesi')
-                                    ->orderBy('sesi','asc')
+                                    ->orderBy('tanggal asc, waktu_mulai','asc')
                                     ->get();
     }
         /**
