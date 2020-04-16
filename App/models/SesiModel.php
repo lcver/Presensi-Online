@@ -34,16 +34,19 @@ class SesiModel extends Controller
                     case 'get_active':
                         $result = Database::table('tbpresensi_sesi')
                                                         ->where('status',2)
+                                                        ->orderBy('tanggal asc, waktu_mulai','asc')
                                                         ->get();
                         break;
                     case 'set_active':
                         $result = Database::table('tbpresensi_sesi')
                                                         ->where('status',1)
+                                                        ->orderBy('tanggal asc, waktu_mulai','asc')
                                                         ->get();
                         break;
                     case 'byId':
                         $result = Database::table('tbpresensi_sesi')
                                                         ->where('id',$data)
+                                                        ->orderBy('tanggal asc, waktu_mulai','asc')
                                                         ->get();
                         break;
                     
