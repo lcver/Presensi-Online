@@ -6,8 +6,7 @@ class PengurusController extends Controller
 {
     public function index()
     {
-        $data['subtitlepage'] = "Prepensi Online Asrama Al-quran PPG Jakarta Pusat";
-
+        $data['subtitlepage'] = "Rekapitulasi Presensi Online Asrama Al-Qur&#039;an PPG Jakarta Pusat";
 
         $result = $this->model('SesiModel')->show('get_active');
         if(!is_null($result)){
