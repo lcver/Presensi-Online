@@ -1,4 +1,5 @@
 # ignore a single file
+vendor.zip
 
 # ignore an entire directory
 
