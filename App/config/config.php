@@ -2,7 +2,7 @@
 session_start();
 // url
 define('BASEURL','http://localhost/project/Abdar/public/');
-define('BASEPATH',BASEURL.'../');
+define('BASEPATH',BASEURL);
 
 // db
 define('DBHOST', 'localhost');
