@@ -1,5 +1,6 @@
 <div class="card">
     <div class="card-body">
+        <?php if($data['status_sesi']!==null) : ?>
         <div class="row">
         <!-- PIE CHART -->
             <div class="col-md-5">
@@ -52,8 +53,11 @@
                 </div>
             </div>
         </div>
+        <!-- /.row -->
+        <?php else :?>
+            <h3 class="text-danger">Sesi Belum Dimulai</h3>
+        <?php endif;?>
     </div>
-    <!-- /.row -->
 </div>
 <!-- /.card -->
 <script>

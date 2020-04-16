@@ -7,11 +7,53 @@ class PengurusController extends Controller
     public function index()
     {
         $data['subtitlepage'] = "Prepensi Online Asrama Al-quran PPG Jakarta Pusat";
+
+
+        $result = $this->model('SesiModel')->show('get_active');
+        if(!is_null($result)){
+            $key = array_keys($result);
+
+            $count = count($key);
+            $num = NULL;
+
+            for ($i=0; $i < $count ; $i++) { 
+                if(is_numeric($key[$i])) $num = true;
+            }
+
+            // foreach ($resultkey as $key) {
+            //     if(!is_numeric($key)) $num = false;
+            // }
+                if(!$num):
+                    $data['status_sesi'][] = $result;
+                else:
+                    $data['status_sesi'] = $result;
+                endif;
+            // var_dump($data['peserta']);
+            // die();
+        }else{
+            $data['status_sesi'] = null;
+            $this->view('dashboard/index',$data,'pengurus');
+            return false;
+        }
+        // $data['status_sesi'] = null;
+
+        // get id sesi
+        foreach ($data['status_sesi'] as $d) {
+            $data['status_sesi'] = $d['id'];
+        }
+        // var_dump($data['status_sesi']);die();
+
         $dataTPQ = $this->model('TpqModel')->create();
+
         $resData=[];
         $total=0;
         foreach ($dataTPQ as $d) {
-            $dataPeserta = $this->model('PesertaModel')->show('byIdTPQ',$d['id']);
+            $condition = [
+                'id'=> $d['id'],
+                'sesi'=> $data['status_sesi']
+            ];
+            $dataPeserta = $this->model('PesertaModel')->show('byIdTPQ',$condition);
+
             $data['tpq'][] = ['tpq'=>$d['tpq'],'desa'=>$d['desa']];
             if($dataPeserta!==NULL){
                 $countData = isset($dataPeserta['nama']) ? 1 : count($dataPeserta);
@@ -42,8 +84,47 @@ class PengurusController extends Controller
         //get Id
         $id = explode('/',$_GET['url']);
         $id = end($id);
+
+        $result = $this->model('SesiModel')->show('get_active');
+        if(!is_null($result)){
+            $key = array_keys($result);
+
+            $count = count($key);
+            $num = NULL;
+
+            for ($i=0; $i < $count ; $i++) { 
+                if(is_numeric($key[$i])) $num = true;
+            }
+
+            // foreach ($resultkey as $key) {
+            //     if(!is_numeric($key)) $num = false;
+            // }
+                if(!$num):
+                    $data['status_sesi'][] = $result;
+                else:
+                    $data['status_sesi'] = $result;
+                endif;
+            // var_dump($data['peserta']);
+            // die();
+        }else{
+            $data['status_sesi'] = null;
+            $this->view('dashboard/index',$data,'pengurus');
+            return false;
+        }
+        // $data['status_sesi'] = null;
+
+        // get id sesi
+        foreach ($data['status_sesi'] as $d) {
+            $data['status_sesi'] = $d['id'];
+        }
+        // var_dump($data['status_sesi']);die();
+
+        $condition = [
+            'id' => $id,
+            'sesi' => $data['status_sesi']
+        ];
         
-        $result = $this->model('PesertaModel')->show('byIdTPQ',$id);
+        $result = $this->model('PesertaModel')->show('byIdTPQ',$condition);
         if(!is_null($result)){
             $key = array_keys($result);
 
@@ -100,9 +181,48 @@ class PengurusController extends Controller
     public function jumlah()
     {
         $dataTPQ = $this->model('TpqModel')->create();
+        
+        $result = $this->model('SesiModel')->show('get_active');
+        if(!is_null($result)){
+            $key = array_keys($result);
+
+            $count = count($key);
+            $num = NULL;
+
+            for ($i=0; $i < $count ; $i++) { 
+                if(is_numeric($key[$i])) $num = true;
+            }
+
+            // foreach ($resultkey as $key) {
+            //     if(!is_numeric($key)) $num = false;
+            // }
+                if(!$num):
+                    $data['status_sesi'][] = $result;
+                else:
+                    $data['status_sesi'] = $result;
+                endif;
+            // var_dump($data['peserta']);
+            // die();
+        }else{
+            $data['status_sesi'] = null;
+            $this->view('dashboard/index',$data,'pengurus');
+            return false;
+        }
+        // $data['status_sesi'] = null;
+
+        // get id sesi
+        foreach ($data['status_sesi'] as $d) {
+            $data['status_sesi'] = $d['id'];
+        }
+        // var_dump($data['status_sesi']);die();
+
         $resData=[];
         foreach ($dataTPQ as $d) {
-            $dataPeserta = $this->model('PesertaModel')->show($d['id']);
+            $condition = [
+                'id' => $d['id'],
+                'sesi' => $data['status_sesi']
+            ];
+            $dataPeserta = $this->model('PesertaModel')->show('byIdTPQ',$condition);
             $data['tpq'][] = ['tpq'=>$d['tpq'],'desa'=>$d['desa']];
             if($dataPeserta!==NULL){
                 $countData = isset($dataPeserta['nama']) ? 1 : count($dataPeserta);
