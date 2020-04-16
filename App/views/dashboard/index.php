@@ -1,3 +1,4 @@
+<div class="pb-2">
 <div class="card">
     <div class="card-body">
         <?php if($data['status_sesi']!==null) : ?>
@@ -39,10 +40,10 @@
                     </div>
                     <?php endfor; ?>
                     <div class="col-md-12">
-                        <div class="info-box col-md-7">
+                        <div class="info-box col-md-6">
                             <div class="info-box-content float-right">
-                                <span class="info-box-text text-bold">
-                                    <h3>Jumlah kehadiran :</h3>
+                                <span class="info-box-text text-bold pt-3">
+                                    <h5>Jumlah kehadiran :</h5>
                                 </span>
                             </div>
                             <span class="info-box-icon bg-primary" style="background:#c3bef0!important;">
@@ -60,6 +61,7 @@
     </div>
 </div>
 <!-- /.card -->
+</div>
 <script>
     window.onload = function(event) {pieChart('<?=BASEURL?>pengurus/jumlah')}
 </script>

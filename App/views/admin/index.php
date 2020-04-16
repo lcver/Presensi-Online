@@ -1,43 +1,5 @@
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">Jadwal Asrama</h4>
-    </div>
-    <div class="card-body">
-        <div class="row">
-        <?php if(isset($data['sesi'])) : ?>
-        <?php $no=1; foreach ($data['sesi'] as $d) :?>
-            <div class="col-md-3 col-sm-6 col-12">
-                <?php if($d['status']==3) : ?>
-                    <div class="alert alert-dark alert-dismissible" style="cursor:default;">
-                <?php else :?>
-                    <div class="alert <?= $d['status']==2 ? 'alert-primary' : 'shadow-sm border-primary';?> alert-dismissible" style="cursor:default;">
-                <?php endif;?>
-                        <i class="icon fas fa-calendar"></i>
-                            <span class="text-lg">
-                                <a href="<?=BASEURL?>admin/jadwal_detail/<?=$d['id']?>" class=" text-decoration-none <?= $d['status']==1 ? 'text-dark' : ''; ?>">
-                                    <?= $d['sesi'] ?>
-                                </a>
-                        </span>
-                    <p class="schedule">
-                        <?= date_format(date_create($d['tanggal']),'d,F Y')?>
-                    </p>
-                    <p class="schedule" >
-                        <?= date_format(date_create($d['waktu_mulai']),'h.i a')?>
-                         s/d 
-                        <?= date_format(date_create($d['waktu_selesai']),'h.i a')?>
-                    </p>
-                </div>
-            </div>
-        <?php
-            endforeach;
-            endif;
-        ?>
-        </div>
-    </div>
-</div>
-
 <?php if($data['activated']!==null) : ?>
-<div class="col-md-12" id="card-active">
+<div class="col-md-6" id="card-active">
     <div class="card">
         <div class="card-body">
             <table class="table table-striped">
@@ -45,7 +7,8 @@
                 <?php foreach ($data['activated'] as $d) : ?>
                     <tr>
                         <td><?=$d['sesi']?></td>
-                        <td><?= date_format(date_create($d['tanggal']),'d,F Y')?></td>
+                        <td><?= date_format(date_create($d['tanggal']),'d F Y')?></td>
+                        <td>Sesi sedang aktif</td>
                         <td>
                             <button class="btn btn-danger" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/inactive_jadwal')" >Inactive</button>
                         </td>
@@ -106,5 +69,43 @@
                 <button type="submit" class="btn btn-primary float-right mt-3">Auto Active</button>
             </div>
         </form> -->
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Jadwal Asrama</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+        <?php if(isset($data['sesi'])) : ?>
+        <?php $no=1; foreach ($data['sesi'] as $d) :?>
+            <div class="col-md-3 col-sm-6 col-12">
+                <?php if($d['status']==3) : ?>
+                    <div class="alert alert-dark alert-dismissible" style="cursor:default;">
+                <?php else :?>
+                    <div class="alert <?= $d['status']==2 ? 'alert-primary' : 'shadow-sm border-primary';?> alert-dismissible" style="cursor:default;">
+                <?php endif;?>
+                        <i class="icon fas fa-calendar"></i>
+                            <span class="text-lg">
+                                <a href="<?=BASEURL?>admin/jadwal_detail/<?=$d['id']?>" class=" text-decoration-none <?= $d['status']==1 ? 'text-dark' : ''; ?>">
+                                    <?= $d['sesi'] ?>
+                                </a>
+                        </span>
+                    <p class="schedule">
+                        <?= date_format(date_create($d['tanggal']),'d,F Y')?>
+                    </p>
+                    <p class="schedule" >
+                        <?= date_format(date_create($d['waktu_mulai']),'h.i a')?>
+                         s/d 
+                        <?= date_format(date_create($d['waktu_selesai']),'h.i a')?>
+                    </p>
+                </div>
+            </div>
+        <?php
+            endforeach;
+            endif;
+        ?>
+        </div>
     </div>
 </div>
