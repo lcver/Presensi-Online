@@ -21,6 +21,12 @@
 
 <!-- jQuery -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js"></script>
+<script>
+    // 'http://localhost/project/Abdar/public/pengurus/jumlah'
+    $.get('<?=BASEURL?>pengurus/jumlah', function(data) {
+        window.onload = function(event) {pieChart(data)}
+    });
+</script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -40,11 +46,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/demo.js"></script>
 <script>
-  function pieChart(api)
+  function pieChart(data)
   {
-    // 'http://localhost/project/Abdar/public/pengurus/jumlah'
-    $.get(api, function(data) {  
-        var requestData = $.parseJSON(data);
+      var requestData = $.parseJSON(data);
+
       /* ChartJS
       * -------
       * Here we will create a few charts using ChartJS
@@ -86,7 +91,6 @@
         data: pieData,
         options: pieOptions
       })
-    });
   }
 
   function ajax(data, req)

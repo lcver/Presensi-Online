@@ -62,6 +62,3 @@
     </div>
     <!-- /.card -->
 </div>
-<script>
-    window.onload = function(event) {pieChart('<?=BASEURL?>pengurus/jumlah')}
-</script>
