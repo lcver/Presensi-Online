@@ -5,7 +5,7 @@
                 <div class="text-center">
                     <img src="<?=BASEURL?>img/logoPPG.jpeg" alt="" class="img-thumbnail img-circle p-0" style="max-width:100px">
                     <h4>Presensi Online Asrama Al-Qur&#039;an PPG Jakarta Pusat</h4>
-                    <h5>PPG Jakarta Pusat</h5>
+                    <!-- <h5>PPG Jakarta Pusat</h5> -->
                 </div>
             </div>
             <?= Flasher::get(); ?>

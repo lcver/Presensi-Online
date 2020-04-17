@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <div class="row">
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Set jadwal</h4>
@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <form action="<?=BASEURL?>admin/set_jadwal" method="post">
+                            <form action="<?php//BASEURL?>admin/set_jadwal" method="post">
                                 <div class="form-group">
                                     <label for="">Nama Acara : </label>
                                     <input class="form-control d-inline" type="text" name="presensi_sesi">
@@ -27,8 +27,7 @@
                     </div>
                 </div>
             </div>
-            <!-- /.card -->
-        </div>
+        </div> -->
         <!-- /.col -->
 
         <div class="col-md-4">
@@ -42,16 +41,16 @@
                             <form action="<?php//BASEURL?>admin/set_jadwal" method="post">
                                 <ul class="list-unstyled m-0">
                                     <li>
-                                        <span>Sesi 1 : 08.00 ~ 09.30</span>
+                                        <span class="bg-primary pl-1 pr-1">Sesi 1 : 08.00 ~ 09.00</span>
                                     </li>
                                     <li>
-                                        <span>Sesi 2 : 10.15 ~ 11.30</span>
+                                        <span class="bg-primary pl-1 pr-1">Sesi 2 : 09.30 ~ 11.00</span>
                                     </li>
                                     <li>
-                                        <span>Sesi 3 : 01.30 ~ 02.30</span>
+                                        <span class="bg-primary pl-1 pr-1">Sesi 3 : 13.30 ~ 14.30</span>
                                     </li>
                                     <li>
-                                        <span>Sesi 3 : 20.00 ~ 21.30</span>
+                                        <span class="bg-primary pl-1 pr-1">Sesi 4 : 20.00 ~ 21.30</span>
                                     </li>
                                 </ul>
                                 <div class="form-group">
