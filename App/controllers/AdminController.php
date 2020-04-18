@@ -391,9 +391,13 @@ class AdminController extends Controller
 
     public function auth()
     {
-        $this->view('authentication/index',[],'self');
-        if(isset($_SESSION['presensi_wrong'])){
-            unset($_SESSION['presensi_wrong']);
+        if(!isset($_SESSION['presensi_adminsession'])){
+            $this->view('authentication/index',[],'self');
+            if(isset($_SESSION['presensi_wrong'])){
+                unset($_SESSION['presensi_wrong']);
+            }
+        }else{
+            echo $_SESSION['presensi_adminsession'];
         }
     }
 
@@ -401,7 +405,8 @@ class AdminController extends Controller
     {
         // $pass = "presensionlineasramappgjakartapusatadminlogin";
         $res = $this->model('SuperadminModel')->auth($_POST['presensi_password']);
-        if($res===true){
+        // var_dump($res);die();
+        if(is_null($res)){
             $_SESSION['presensi_wrong'] = true;
         }else{
             $_SESSION['presensi_adminsession'] = $res['id'];
