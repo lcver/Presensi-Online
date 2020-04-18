@@ -3,6 +3,28 @@
         <?=Flasher::get()?>
     </div>
     <div class="row">
+        <?php if(isset($data['jadwal'])) : ?>
+        <?php foreach ($data['jadwal'] as $d) :?>
+        <div class="col-md-4">
+            <div class="card <?=$d['status']==2 ? 'bg-primary' : '';?>">
+                <div class="card-body">
+                    <button type="button" class="btn btn-tool float-right" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/delete_jadwal')" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                    <form action="<?=BASEURL?>admin/<?=$d['status']==2 ? 'inactive_jadwal' : 'activated_jadwal' ;?>" method="post">
+                        <input type="hidden" name="id" value="<?=$d['id']?>">
+                        Tanggal : <?=date_format(date_create($d['tanggal']),'D, d-m-Y')?>
+                        <?php if($d['status']==1) :?>
+                                <button type="submit" class="btn btn-primary btn-sm">Enable</button>
+                        <?php else: ?>
+                            <button class="btn btn-danger btn-sm">Disable</button>
+                        <?php endif; ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php endforeach;?>
+        <?php endif;?>
+    </div>
+    <div class="row">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
@@ -83,26 +105,6 @@
             <!-- /.card -->
         </div>
         <!-- /.col -->
-        <div class="col-md-4">
-            <?php if(isset($data['jadwal'])) : ?>
-            <?php foreach ($data['jadwal'] as $d) :?>
-            <div class="card <?=$d['status']==2 ? 'bg-primary' : '';?>">
-                <div class="card-body">
-                    <button type="button" class="btn btn-tool float-right" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/delete_jadwal')" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                    <form action="<?=BASEURL?>admin/<?=$d['status']==2 ? 'inactive_jadwal' : 'activated_jadwal' ;?>" method="post">
-                        <input type="hidden" name="id" value="<?=$d['id']?>">
-                        Tanggal : <?=date_format(date_create($d['tanggal']),'D, d-m-Y')?>
-                        <?php if($d['status']==1) :?>
-                                <button type="submit" class="btn btn-primary btn-sm">Enable</button>
-                        <?php else: ?>
-                            <button class="btn btn-danger btn-sm">Disable</button>
-                        <?php endif; ?>
-                    </form>
-                </div>
-            </div>
-            <?php endforeach;?>
-            <?php endif;?>
-        </div>
     </div>
 </div>
 <div class="card">

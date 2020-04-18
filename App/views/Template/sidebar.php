@@ -36,6 +36,13 @@
               <p class="text">Jadwal</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-clock"></i>
+              <p class="text">Sesi</p>
+              <span class="badge badge-danger right">Incoming</span>
+            </a>
+          </li>
           <!-- <li class="nav-header">LABELS</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
