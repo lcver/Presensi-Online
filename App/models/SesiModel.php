@@ -36,7 +36,7 @@ class SesiModel extends Controller
                     case 'get_active':
                         $result = Database::table('tbpresensi_sesi')
                                                         ->join('tbpresensi_jadwal')
-                                                        ->on('tbpresensi_sesi.idJadwal','tbpresensi_jadwal.id and tbpresensi_jadwal.status=2')
+                                                        ->on('tbpresensi_sesi.idJadwal','tbpresensi_jadwal.id and tbpresensi_jadwal.status=2 and tbpresensi_sesi.status=2')
                                                         ->orderBy('tbpresensi_jadwal.tanggal asc, tbpresensi_sesi.waktu_mulai','asc')
                                                         ->get();
                         break;

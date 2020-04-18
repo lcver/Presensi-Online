@@ -123,6 +123,7 @@ class PengurusController extends Controller
         $id = end($id);
 
         $result = $this->model('SesiModel')->show('get_active');
+        // var_dump($result);die();
         if(!is_null($result)){
             $key = array_keys($result);
 
@@ -152,13 +153,13 @@ class PengurusController extends Controller
 
         // get id sesi
         foreach ($data['status_sesi'] as $d) {
-            $data['status_sesi'] = $d['id'];
+            $idJadwal = $d['idJadwal'];
         }
         // var_dump($data['status_sesi']);die();
 
         $condition = [
             'id' => $id,
-            'sesi' => $data['status_sesi']
+            'idJadwal' => $idJadwal
         ];
         
         $result = $this->model('PesertaModel')->show('byIdTPQ',$condition);

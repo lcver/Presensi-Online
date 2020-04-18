@@ -21,6 +21,7 @@
                         <tr>
                             <td><?=$no++?></td>
                             <td><?=$d['nama']?></td>
+                            <td><?= date_format(date_create($d['curent_timestamp']),'H:i a')?></td>
                         </tr>
                         <?php endforeach ?>
                     <?php endif;?>

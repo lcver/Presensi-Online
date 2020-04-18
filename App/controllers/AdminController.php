@@ -101,7 +101,7 @@ class AdminController extends Controller
         /**
          * Show session ready to activated
          */
-        $result = $this->model('SesiModel')->show('get_active', $res['id']);
+        $result = $this->model('SesiModel')->show('get_active');
         // var_dump($result);die();
         if(!is_null($result)){
             $key = array_keys($result);
