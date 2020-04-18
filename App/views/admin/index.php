@@ -11,7 +11,7 @@
                         <td>Sedang aktif</td>
                         <td>
                             <!-- <button class="btn btn-light" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/inactive_jadwal')" >pause</button> -->
-                            <button class="btn btn-danger" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/inactive_jadwal')" >selesai</button>
+                            <button class="btn btn-danger" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/inactive_sesi')" >selesai</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>

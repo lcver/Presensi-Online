@@ -122,7 +122,11 @@ class PengurusController extends Controller
         $id = explode('/',$_GET['url']);
         $id = end($id);
 
-        $result = $this->model('SesiModel')->show('get_active');
+        $res = $this->model('JadwalModel')->show('get_active_jadwal');
+        // var_dump($res);
+
+
+        $result = $this->model('SesiModel')->show('get_by_jadwal',$res['id']);
         // var_dump($result);die();
         if(!is_null($result)){
             $key = array_keys($result);
@@ -138,24 +142,24 @@ class PengurusController extends Controller
             //     if(!is_numeric($key)) $num = false;
             // }
                 if(!$num):
-                    $data['status_sesi'][] = $result;
+                    $data['status_jadwal'][] = $result;
                 else:
-                    $data['status_sesi'] = $result;
+                    $data['status_jadwal'] = $result;
                 endif;
             // var_dump($data['peserta']);
             // die();
         }else{
-            $data['status_sesi'] = null;
-            $this->view('dashboard/index',$data,'pengurus');
-            return false;
+            $data['status_jadwal'] = null;
+            // $this->view('dashboard/index',$data,'pengurus');
+            // return false;
         }
-        // $data['status_sesi'] = null;
+        // $data['status_jadwal'] = null;
 
         // get id sesi
-        foreach ($data['status_sesi'] as $d) {
+        foreach ($data['status_jadwal'] as $d) {
             $idJadwal = $d['idJadwal'];
         }
-        // var_dump($data['status_sesi']);die();
+        // var_dump($data['status_jadwal']);die();
 
         $condition = [
             'id' => $id,
