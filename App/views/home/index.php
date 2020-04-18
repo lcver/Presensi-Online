@@ -17,7 +17,7 @@
                             <h5>Presensi <?=$d['sesi']?> Tanggal : <?= date_format(date_create($d['tanggal']),'d F Y')?></h5>
                             <p>Mulai <?=date_format(date_create($d['waktu_mulai']),'H:i')?> ~ Selesai <?=date_format(date_create($d['waktu_selesai']),'H:i')?></p>
                             <div class="col-md-3">
-                                <input type="hidden" class="form-control" name="presensi_sesi" value="<?=$d['id']?>">
+                                <input type="hidden" class="form-control" name="presensi_idJadwal" value="<?=$d['idJadwal']?>">
                             </div>
                         <?php endforeach; ?>
                     </div>

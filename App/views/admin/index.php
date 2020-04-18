@@ -39,7 +39,7 @@
                     <td><?=date_format(date_create($d['tanggal']),'d,F Y')?></td>
                     <td><?=$d['waktu_mulai']?> - <?= $d['waktu_selesai']?></td>
                     <td>
-                        <form action="<?=BASEURL?>admin/activated_jadwal" method="post">
+                        <form action="<?=BASEURL?>admin/activated_sesi" method="post">
                             <input type="hidden" class="d-none" name="presensi_jadwal" value="<?=$d['id']?>">
                             <button type="submit" class="btn btn-primary" >Aktif</button>
                         </form>

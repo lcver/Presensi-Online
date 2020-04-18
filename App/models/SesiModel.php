@@ -15,7 +15,9 @@ class SesiModel extends Controller
      */
     public function create(){
         return Database::table('tbpresensi_sesi')
-                                    ->orderBy('tanggal asc, waktu_mulai','asc')
+                                    ->join('tbpresensi_jadwal')
+                                    ->on('tbpresensi_sesi.idJadwal','tbpresensi_jadwal.id')
+                                    ->orderBy('tanggal asc, tbpresensi_sesi.waktu_mulai','asc')
                                     ->get();
     }
         /**
@@ -33,21 +35,29 @@ class SesiModel extends Controller
                 switch ($request) {
                     case 'get_active':
                         $result = Database::table('tbpresensi_sesi')
-                                                        ->where('status',2)
-                                                        ->orderBy('tanggal asc, waktu_mulai','asc')
+                                                        ->join('tbpresensi_jadwal')
+                                                        ->on('tbpresensi_sesi.idJadwal','tbpresensi_jadwal.id and tbpresensi_jadwal.status=2')
+                                                        ->orderBy('tbpresensi_jadwal.tanggal asc, tbpresensi_sesi.waktu_mulai','asc')
                                                         ->get();
                         break;
                     case 'set_active':
                         $result = Database::table('tbpresensi_sesi')
-                                                        ->where('status',1)
-                                                        ->orderBy('tanggal asc, waktu_mulai','asc')
+                                                        ->join('tbpresensi_jadwal')
+                                                        ->on('tbpresensi_sesi.idJadwal','tbpresensi_jadwal.id and tbpresensi_jadwal.status=2 and tbpresensi_sesi.status=1')
+                                                        ->orderBy('tbpresensi_jadwal.tanggal asc, waktu_mulai','asc')
+                                                        ->fetch(['tbpresensi_sesi.*','tbpresensi_jadwal.tanggal'])
                                                         ->get();
                         break;
                     case 'byId':
                         $result = Database::table('tbpresensi_sesi')
                                                         ->where('id',$data)
-                                                        ->orderBy('tanggal asc, waktu_mulai','asc')
+                                                        ->orderBy('waktu_mulai','asc')
                                                         ->get();
+                    case 'get_by_jadwal':
+                        $result = Database::table('tbpresensi_sesi')
+                                                    ->where('idJadwal',$data)
+                                                    ->get();
+                        break;
                         break;
                     
                     default:

@@ -95,10 +95,14 @@ class AdminController extends Controller
             $data['dataadmin']=NULL;
         }
 
+        // get id Jadwal
+        $res = $this->model('JadwalModel')->show('get_active_jadwal');
+
         /**
-         * Tampil Data Admin
+         * Show session ready to activated
          */
-        $result = $this->model('SesiModel')->show('get_active');
+        $result = $this->model('SesiModel')->show('get_active', $res['id']);
+        // var_dump($result);die();
         if(!is_null($result)){
             $key = array_keys($result);
 
@@ -144,15 +148,41 @@ class AdminController extends Controller
             //     if(!is_numeric($key)) $num = false;
             // }
                 if(!$num):
-                    $data[] = $result;
+                    $data['sesi'][] = $result;
                 else:
-                    $data = $result;
+                    $data['sesi'] = $result;
                 endif;
-            // var_dump($data);
+            // var_dump($data['sesi']);
             // die();
         }else{
-            $data=NULL;
+            $data['sesi']=NULL;
         }
+
+        $result = $this->model('JadwalModel')->create();
+        if(!is_null($result)){
+            $key = array_keys($result);
+
+            $count = count($key);
+            $num = NULL;
+
+            for ($i=0; $i < $count ; $i++) { 
+                if(is_numeric($key[$i])) $num = true;
+            }
+
+            // foreach ($resultkey as $key) {
+            //     if(!is_numeric($key)) $num = false;
+            // }
+                if(!$num):
+                    $data['jadwal'][] = $result;
+                else:
+                    $data['jadwal'] = $result;
+                endif;
+            // var_dump($data['jadwal']);
+            // die();
+        }else{
+            $data['jadwal']=NULL;
+        }
+        
 
         $this->view('admin/jadwal',$data,'admin');
     }
@@ -164,16 +194,9 @@ class AdminController extends Controller
 
     public function set_jadwal()
     {
-        $data = [
-            'sesi' => $_POST['presensi_sesi'],
-            'tanggal' => $_POST['presensi_tanggal'],
-            'waktu_mulai' => $_POST['presensi_waktu_mulai'] ,
-            'waktu_selesai' => $_POST['presensi_waktu_selesai']
-        ];
-
         if(isset($_SESSION['presensi_adminsession'])){
-            $res = $this->model('SesiModel')->store($data);
-
+            $res = $this->model('JadwalModel')->store(['tanggal'=>$_POST['presensi_tanggal']]);
+            // var_dump($res);die();
             if($res===true){
                 Flasher::setFlash('Jadwal Berhasil Ditambahkan',true);
             }else{
@@ -183,7 +206,27 @@ class AdminController extends Controller
         header('location:'.BASEURL.'admin/jadwal');
     }
 
-    public function activated_jadwal()
+    public function set_sesi()
+    {
+        if(isset($_SESSION['presensi_adminsession'])){
+            $data = [
+                'sesi' => $_POST['presensi_sesi'],
+                'idJadwal' => $_POST['presensi_jadwal'],
+                'waktu_mulai' => $_POST['presensi_waktu_mulai'] ,
+                'waktu_selesai' => $_POST['presensi_waktu_selesai']
+            ];
+            // var_dump($data);die();
+            $res = $this->model('SesiModel')->store($data);
+
+            if($res===true){
+                Flasher::setFlash('Berhasil membuat sesi',true);
+            }else{
+                Flasher::setFlash('Gagal membuat sesi',false);
+            }
+        }
+        header('location:'.BASEURL.'admin/jadwal');
+    }
+    public function activated_sesi()
     {
         if(isset($_SESSION['presensi_adminsession'])){
             $res = $this->model('SesiModel')->update($_POST['presensi_jadwal'],['status'=>2]);
@@ -192,7 +235,7 @@ class AdminController extends Controller
         header('location:'.BASEURL.'admin');
     }
 
-    public function inactive_jadwal()
+    public function inactive_sesi()
     {
         if(isset($_SESSION['presensi_adminsession'])){
             $res = $this->model('SesiModel')->update($_POST['id'],['status'=>3]);
@@ -200,10 +243,29 @@ class AdminController extends Controller
         }
     }
 
+    public function activated_jadwal()
+    {
+        if(isset($_SESSION['presensi_adminsession'])){
+            $res = $this->model('JadwalModel')->update($_POST['id'],['status'=>2]);
+            // var_dump($_POST);die();
+            if($res!==true) echo "gagal";
+        }
+        header('location:'.BASEURL.'admin/jadwal');
+    }
+
+    public function inactive_jadwal()
+    {
+        if(isset($_SESSION['presensi_adminsession'])){
+            $res = $this->model('JadwalModel')->update($_POST['id'],['status'=>1]);
+            if($res!==true) echo "gagal";
+        }
+        header('location:'.BASEURL.'admin/jadwal');
+    }
+
     /**
      * auto update jadwal
      */
-    public function auto_jadwal()
+    public function auto_sesi()
     {
         if(isset($_SESSION['presensi_adminsession'])){
             $res = $this->model('SesiModel')->show('byId',$_POST['id']);
@@ -220,6 +282,25 @@ class AdminController extends Controller
     }
 
     public function delete_jadwal()
+    {
+        if(isset($_SESSION['presensi_adminsession']))
+        {
+            $res = $this->model('SesiModel')->show('get_by_jadwal',$_POST['id']);
+            if($res!==null)
+            {
+                $res = $this->model('SesiModel')->destroy(['idJadwal'=>$_POST['id']]);
+                if($res!==true) echo "failed deleting sesi";
+            }
+            $condition = ['id'=>$_POST['id']];
+            $res = $this->model('JadwalModel')->destroy($condition);
+            if($res!==true)
+            {
+                echo "isn't delete jadwal";
+            }
+        }
+    }
+
+    public function delete_sesi()
     {
         if(isset($_SESSION['presensi_adminsession']))
         {

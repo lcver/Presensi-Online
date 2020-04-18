@@ -30,7 +30,7 @@ class PesertaModel extends Controller
                     case 'byIdTPQ':
                         $result = Database::table('tbpresensi_peserta')
                                                         // ->where('idTpq',$cond)
-                                                        ->raw('idTpq='.$cond['id'].' and idSesi='.$cond['sesi'])
+                                                        ->raw('idTpq='.$cond['id'].' and idJadwal='.$cond['idJadwal'])
                                                         // ->join('tbpresensi_tpq')
                                                         // ->on('tbpresensi_tpq.id',"tbpresensi_peserta.idTpq and tbpresensi_peserta.idTpq =".$request)
                                                         ->get();

@@ -6,6 +6,11 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $result = $this->model('JadwalModel')->show('get_active_jadwal');
+        $data['idJadwal'] = $result['id'];
+        /**
+         * get sesi active and jadwal active
+         */
         $result = $this->model('SesiModel')->show('get_active');
         if(!is_null($result)){
             $key = array_keys($result);
@@ -30,7 +35,6 @@ class HomeController extends Controller
         }else{
             $data['sesi']=NULL;
         }
-
         
         // $this->view('load/index',[],'self');
         $data['tpq'] = $this->model('TpqModel')->create();
@@ -50,7 +54,7 @@ class HomeController extends Controller
             'nama'=>$nama,
             'jenis_kelamin'=>$_POST['presensi_jeniskelamin'],
             'idTpq'=>$_POST['presensi_tpq'],
-            'idSesi'=>$_POST['presensi_sesi']
+            'idJadwal'=>$_POST['presensi_idJadwal']
         ];
 
         $res = $this->model('PesertaModel')->show('filtering',$postData);

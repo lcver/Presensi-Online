@@ -21,12 +21,6 @@
 
 <!-- jQuery -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js"></script>
-<script>
-    // 'http://localhost/project/Abdar/public/pengurus/jumlah'
-    $.get('<?=BASEURL?>pengurus/jumlah', function(data) {
-        window.onload = function(event) {pieChart(data)}
-    });
-</script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -46,51 +40,52 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/demo.js"></script>
 <script>
-  function pieChart(data)
+  function pieChart(api)
   {
-      var requestData = $.parseJSON(data);
-
-      /* ChartJS
-      * -------
-      * Here we will create a few charts using ChartJS
-      */
-      // Get context with jQuery - using jQuery's .get() method.
-      var donutData        = {
-        labels: [
-            'TPQ AL-HAFIDHUN',
-            'TPQ AL-MUHSININ',
-            'TPQ AL-ICHSAN',
-            'TPQ H. M. NURUDDIN',
-            'TPQ AL-FIRDAUS',
-            'TPQ ANNAFIU',
-            'TPQ BAITUL ISTIQOMAH',
-            'TPQ ASSYUHADA',
-        ],
-        datasets: [
-          {
-            // data: [1,0,2,0,1,0,0,3],
-            data: requestData,
-            backgroundColor : ['#6a8caf','#4baea0','#f67280','#99d8d0','#be9fe1','#eb8242','#9cf196','#484c7f'],
-          }
-        ]
-      }
-      //-------------
-      //- PIE CHART -
-      //-------------
-      // Get context with jQuery - using jQuery's .get() method.
-      var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-      var pieData        = donutData;
-      var pieOptions     = {
-        maintainAspectRatio : false,
-        responsive : true,
-      }
-      //Create pie or douhnut chart
-      // You can switch between pie and douhnut using the method below.
-      var pieChart = new Chart(pieChartCanvas, {
-        type: 'pie',
-        data: pieData,
-        options: pieOptions
-      })
+      $.get(api, function(data) {
+        var requestData = $.parseJSON(data);
+        /* ChartJS
+        * -------
+        * Here we will create a few charts using ChartJS
+        */
+        // Get context with jQuery - using jQuery's .get() method.
+        var donutData        = {
+          labels: [
+              'TPQ AL-HAFIDHUN',
+              'TPQ AL-MUHSININ',
+              'TPQ AL-ICHSAN',
+              'TPQ H. M. NURUDDIN',
+              'TPQ AL-FIRDAUS',
+              'TPQ ANNAFIU',
+              'TPQ BAITUL ISTIQOMAH',
+              'TPQ ASSYUHADA',
+          ],
+          datasets: [
+            {
+              // data: [1,0,2,0,1,0,0,3],
+              data: requestData,
+              backgroundColor : ['#6a8caf','#4baea0','#f67280','#99d8d0','#be9fe1','#eb8242','#9cf196','#484c7f'],
+            }
+          ]
+        }
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieData        = donutData;
+        var pieOptions     = {
+          maintainAspectRatio : false,
+          responsive : true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        var pieChart = new Chart(pieChartCanvas, {
+          type: 'pie',
+          data: pieData,
+          options: pieOptions
+        })
+      });
   }
 
   function ajax(data, req)

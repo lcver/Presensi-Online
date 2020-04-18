@@ -1,7 +1,7 @@
 <div class="pb-2">
     <div class="card">
         <div class="card-body">
-            <?php if($data['status_sesi']!==null) : ?>
+            <?php if($data['status_jadwal']!==null) : ?>
             <div class="row">
             <!-- PIE CHART -->
                 <div class="col-md-5">
@@ -62,3 +62,7 @@
     </div>
     <!-- /.card -->
 </div>
+<script>
+    // 'http://localhost/project/Abdar/public/pengurus/jumlah'
+    window.onload = function(event) {pieChart('<?=BASEURL?>pengurus/jumlah')}
+</script>
