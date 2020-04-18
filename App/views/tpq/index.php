@@ -7,7 +7,9 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <h3>TPQ <?=$data['tpq']['tpq']?></h3>
+            <?php foreach ($data['tpq'] as $d) : ?>
+            <h3>TPQ <?=$d['tpq']?></h3>
+            <?php endforeach; ?>
             <table class="table table-striped">
                 <thead>
                     <tr>
