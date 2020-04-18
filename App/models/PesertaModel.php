@@ -38,7 +38,7 @@ class PesertaModel extends Controller
                                                     "nama='".$cond['nama']."'".
                                                     " and jenis_kelamin='".$cond['jenis_kelamin']."'".
                                                     " and idTpq='".$cond['idTpq']."'".
-                                                    " and idSesi='".$cond['idSesi']."'")
+                                                    " and idJadwal='".$cond['idJadwal']."'")
                                                 ->get();
                         break;
 

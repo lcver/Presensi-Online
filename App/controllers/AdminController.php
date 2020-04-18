@@ -239,7 +239,11 @@ class AdminController extends Controller
     {
         if(isset($_SESSION['presensi_adminsession'])){
             $res = $this->model('SesiModel')->update($_POST['id'],['status'=>3]);
-            if($res!==true) echo "gagal";
+            if($res!==true):
+                echo "gagal";
+            else:
+                echo "berhasil";
+            endif;
         }
     }
 

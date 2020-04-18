@@ -56,6 +56,7 @@ class HomeController extends Controller
             'idTpq'=>$_POST['presensi_tpq'],
             'idJadwal'=>$_POST['presensi_idJadwal']
         ];
+        // var_dump($postData);
 
         $res = $this->model('PesertaModel')->show('filtering',$postData);
         // var_dump($res);

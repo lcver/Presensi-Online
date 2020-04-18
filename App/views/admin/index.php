@@ -80,7 +80,7 @@
     <div class="card-body">
         <div class="row">
         <?php if(isset($data['sesi'])) : ?>
-        <?php $no=1; foreach ($data['sesi'] as $d) :?>
+        <?php $no=1; foreach ($data['sesi'] as $d) : ?>
             <div class="col-md-3 col-sm-6 col-12">
                 <?php if($d['status']==3) : ?>
                     <div class="alert alert-dark alert-dismissible" style="cursor:default;">

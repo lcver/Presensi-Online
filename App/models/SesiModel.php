@@ -18,6 +18,7 @@ class SesiModel extends Controller
                                     ->join('tbpresensi_jadwal')
                                     ->on('tbpresensi_sesi.idJadwal','tbpresensi_jadwal.id')
                                     ->orderBy('tanggal asc, tbpresensi_sesi.waktu_mulai','asc')
+                                    ->fetch(['tbpresensi_sesi.*','tbpresensi_jadwal.tanggal'])
                                     ->get();
     }
         /**
@@ -38,6 +39,7 @@ class SesiModel extends Controller
                                                         ->join('tbpresensi_jadwal')
                                                         ->on('tbpresensi_sesi.idJadwal','tbpresensi_jadwal.id and tbpresensi_jadwal.status=2 and tbpresensi_sesi.status=2')
                                                         ->orderBy('tbpresensi_jadwal.tanggal asc, tbpresensi_sesi.waktu_mulai','asc')
+                                                        ->fetch(['tbpresensi_sesi.*','tbpresensi_jadwal.tanggal'])
                                                         ->get();
                         break;
                     case 'set_active':
