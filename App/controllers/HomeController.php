@@ -8,33 +8,13 @@ class HomeController extends Controller
     {
         $result = $this->model('JadwalModel')->show('get_active_jadwal');
         $data['idJadwal'] = $result['id'];
+        
         /**
          * get sesi active and jadwal active
          */
         $result = $this->model('SesiModel')->show('get_active');
-        if(!is_null($result)){
-            $key = array_keys($result);
+        $data['sesi'] = Helper::null_checker($result);
 
-            $count = count($key);
-            $num = NULL;
-
-            for ($i=0; $i < $count ; $i++) { 
-                if(is_numeric($key[$i])) $num = true;
-            }
-
-            // foreach ($resultkey as $key) {
-            //     if(!is_numeric($key)) $num = false;
-            // }
-                if(!$num):
-                    $data['sesi'][] = $result;
-                else:
-                    $data['sesi'] = $result;
-                endif;
-            // var_dump($data['sesi']);
-            // die();
-        }else{
-            $data['sesi']=NULL;
-        }
         
         // $this->view('load/index',[],'self');
         $data['tpq'] = $this->model('TpqModel')->create();

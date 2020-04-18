@@ -12,31 +12,12 @@ class PengurusController extends Controller
          * Search jadwal have status is 2
          */
         $result = $this->model('JadwalModel')->show('get_active_jadwal');
-        if(!is_null($result)){
-            $key = array_keys($result);
-
-            $count = count($key);
-            $num = NULL;
-
-            for ($i=0; $i < $count ; $i++) { 
-                if(is_numeric($key[$i])) $num = true;
-            }
-
-            // foreach ($resultkey as $key) {
-            //     if(!is_numeric($key)) $num = false;
-            // }
-                if(!$num):
-                    $data['status_jadwal'][] = $result;
-                else:
-                    $data['status_jadwal'] = $result;
-                endif;
-            // var_dump($data['peserta']);
-            // die();
-        }else{
-            $data['status_jadwal'] = null;
+        $data['status_jadwal'] = Helper::null_checker($result);
+        if(is_null($data['status_jadwal'])){
             $this->view('dashboard/index',$data,'pengurus');
             return false;
         }
+        
         foreach ($data['status_jadwal'] as $d) {
             $idJadwal = $d['id'];
         }
@@ -45,30 +26,7 @@ class PengurusController extends Controller
          * get session when having same idJadwal
          */
         $result = $this->model('SesiModel')->show('get_by_jadwal',$idJadwal);
-        if(!is_null($result)){
-            $key = array_keys($result);
-
-            $count = count($key);
-            $num = NULL;
-
-            for ($i=0; $i < $count ; $i++) { 
-                if(is_numeric($key[$i])) $num = true;
-            }
-
-            // foreach ($resultkey as $key) {
-            //     if(!is_numeric($key)) $num = false;
-            // }
-                if(!$num):
-                    $data['status_sesi'][] = $result;
-                else:
-                    $data['status_sesi'] = $result;
-                endif;
-            // var_dump($data['peserta']);
-            // die();
-        }else{
-            $data['status_sesi'] = null;
-        }
-        // $data['status_sesi'] = null;
+        $data['status_sesi'] = Helper::null_checker($result);
 
         // get id sesi
         if(!is_null($data['status_sesi'])){
@@ -127,33 +85,7 @@ class PengurusController extends Controller
 
 
         $result = $this->model('SesiModel')->show('get_by_jadwal',$res['id']);
-        // var_dump($result);die();
-        if(!is_null($result)){
-            $key = array_keys($result);
-
-            $count = count($key);
-            $num = NULL;
-
-            for ($i=0; $i < $count ; $i++) { 
-                if(is_numeric($key[$i])) $num = true;
-            }
-
-            // foreach ($resultkey as $key) {
-            //     if(!is_numeric($key)) $num = false;
-            // }
-                if(!$num):
-                    $data['status_jadwal'][] = $result;
-                else:
-                    $data['status_jadwal'] = $result;
-                endif;
-            // var_dump($data['peserta']);
-            // die();
-        }else{
-            $data['status_jadwal'] = null;
-            // $this->view('dashboard/index',$data,'pengurus');
-            // return false;
-        }
-        // $data['status_jadwal'] = null;
+        $data['status_jadwal'] = Helper::null_checker($result);
 
         // get id sesi
         foreach ($data['status_jadwal'] as $d) {
@@ -167,53 +99,12 @@ class PengurusController extends Controller
         ];
         
         $result = $this->model('PesertaModel')->show('byIdTPQ',$condition);
-        if(!is_null($result)){
-            $key = array_keys($result);
-
-            $count = count($key);
-            $num = NULL;
-
-            for ($i=0; $i < $count ; $i++) { 
-                if(is_numeric($key[$i])) $num = true;
-            }
-
-            // foreach ($resultkey as $key) {
-            //     if(!is_numeric($key)) $num = false;
-            // }
-                if(!$num):
-                    $data['peserta'][] = $result;
-                else:
-                    $data['peserta'] = $result;
-                endif;
-            // var_dump($data['peserta']);
-            // die();
-        }else{
-            $data['peserta']=NULL;
-        }
+        $data['peserta'] = Helper::null_checker($result);
 
 
         $result = $this->model('TpqModel')->show($id);
-        if(!is_null($result)){
-            $key = array_keys($result);
-
-            $count = count($key);
-            $num = NULL;
-
-            for ($i=0; $i < $count ; $i++) { 
-                if(is_numeric($key[$i])) $num = true;
-            }
-
-            // foreach ($resultkey as $key) {
-            //     if(!is_numeric($key)) $num = false;
-            // }
-                if(!$num):
-                    $data['tpq'] = $result;
-                else:
-                    $data['tpq'] = $result;
-                endif;
-            // var_dump($data['tpq']);
-            // die();
-        }else{
+        $data['tpq'] = Helper::null_checker($result);
+        if(is_null($data['tpq'])){
             $data['tpq']=NULL;
         }
         
