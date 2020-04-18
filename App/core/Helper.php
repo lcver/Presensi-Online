@@ -2,7 +2,7 @@
 
 class Helper
 {
-    public function null_checker($request)
+    public static function null_checker($request)
     {
         if(!is_null($request)){
             // count array key
