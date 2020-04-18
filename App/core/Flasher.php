@@ -15,7 +15,7 @@ class Flasher
 
         self::$message = "
         <div class='callout callout-".$result."'>
-            <h5>".$message."!</h5>
+            <h5>".$message."</h5>
         </div>";
 
         $_SESSION['Flash'] = self::$message;
