@@ -43,6 +43,13 @@ class JadwalModel extends Controller
                                                         ->where('status',2)
                                                         ->get();
                         break;
+                    case 'get_all_by_jadwal':
+                        $result = Database::table('tbpresensi_jadwal')
+                                                        ->join('tbpresensi_peserta')
+                                                        ->on('tbpresensi_jadwal.id','tbpresensi_peserta.idJadwal and tbpresensi_jadwal.id ='.$cond)
+                                                        ->fetch(['tanggal'])
+                                                        ->get();
+                        break;
                     default:
                         # code...
                         break;

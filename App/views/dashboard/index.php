@@ -1,4 +1,4 @@
-<div class="pb-2">
+<div class="pb-3">
     <div class="card">
         <div class="card-body">
             <?php if($data['status_jadwal']!==null) : ?>
@@ -60,7 +60,7 @@
             <?php endif;?>
         </div>
         <div class="card-footer">
-            <a href="" class="btn btn-primary">Lihat Absensi Sebelumnya</a>
+            <a href="<?=BASEURL?>rekap" class="btn btn-primary">Lihat Absensi Sebelumnya</a>
         </div>
     </div>
     <!-- /.card -->

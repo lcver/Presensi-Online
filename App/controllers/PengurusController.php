@@ -14,7 +14,7 @@ class PengurusController extends Controller
         $result = $this->model('JadwalModel')->show('get_active_jadwal');
         $data['status_jadwal'] = Helper::null_checker($result);
         if(is_null($data['status_jadwal'])){
-            $this->view('dashboard/index',$data,'pengurus');
+            $this->view('dashboard/index',$data);
             return false;
         }
         
@@ -46,7 +46,7 @@ class PengurusController extends Controller
                 'idJadwal'=> $idJadwal
             ];
 
-            $dataPeserta = $this->model('PesertaModel')->show('byIdTPQ',$condition);
+            $dataPeserta = $this->model('PesertaModel')->show('get_by_id_tpq_jadwal',$condition);
             // var_dump($dataPeserta);die();
 
             $data['tpq'][] = ['tpq'=>$d['tpq'],'desa'=>$d['desa']];
@@ -71,9 +71,9 @@ class PengurusController extends Controller
         // var_dump($data['jumlahdata']);
         // die();
 
-        $this->view('dashboard/index',$data,'pengurus');
+        $this->view('dashboard/index',$data);
     }
-
+    
     public function tpq()
     {
         //get Id
@@ -98,7 +98,7 @@ class PengurusController extends Controller
             'idJadwal' => $idJadwal
         ];
         
-        $result = $this->model('PesertaModel')->show('byIdTPQ',$condition);
+        $result = $this->model('PesertaModel')->show('get_by_id_tpq_jadwal',$condition);
         $data['peserta'] = Helper::null_checker($result);
 
 
@@ -124,7 +124,7 @@ class PengurusController extends Controller
                 'id'=> $d['id'],
                 'idJadwal'=> $res['id']
             ];
-            $dataPeserta = $this->model('PesertaModel')->show('byIdTPQ',$condition);
+            $dataPeserta = $this->model('PesertaModel')->show('get_by_id_tpq_jadwal',$condition);
 
             if($dataPeserta!==NULL){
                 $countData = isset($dataPeserta['nama']) ? 1 : count($dataPeserta);

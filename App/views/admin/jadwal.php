@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header bg-primary">
                     Daftar Jadwal
+                    <?= date_format(date_create('2020-04-16 07:09:34'),'H:i:s:a');?>
                 </div>
                 <div class="card-body overflow-auto" style="max-height:50vh">
                     <?php if(isset($data['jadwal'])) : ?>

@@ -27,7 +27,7 @@ class PesertaModel extends Controller
              */
             public function show($request,$cond=null){
                 switch ($request) {
-                    case 'byIdTPQ':
+                    case 'get_by_id_tpq_jadwal':
                         $result = Database::table('tbpresensi_peserta')
                                                         ->raw('idTpq='.$cond['id'].' and idJadwal='.$cond['idJadwal'])
                                                         ->get();
@@ -40,6 +40,30 @@ class PesertaModel extends Controller
                                                     " and idTpq='".$cond['idTpq']."'".
                                                     " and idJadwal='".$cond['idJadwal']."'")
                                                 ->get();
+                        break;
+                    case 'countPeserta_by_jadwal':
+                        $result = Database::table('tbpresensi_peserta')
+                                                ->join('tbpresensi_jadwal')
+                                                ->on('tbpresensi_peserta.idJadwal','tbpresensi_jadwal.id and tbpresensi_jadwal.id='.$cond)
+                                                ->fetch([
+                                                    'COUNT(tbpresensi_peserta.id) as total',
+                                                    'tbpresensi_jadwal.tanggal',
+                                                    'tbpresensi_jadwal.id as idJadwal'
+                                                    ])
+                                                ->get();
+                        break;
+                    case 'countPeserta_by_tpq':
+                        $result = Database::table('tbpresensi_peserta')
+                                                ->join('tbpresensi_tpq')
+                                                ->on('tbpresensi_peserta.idTpq','tbpresensi_tpq.id and tbpresensi_tpq.id='.$cond['tpq'])
+                                                ->join('tbpresensi_jadwal')
+                                                ->on('tbpresensi_peserta.idJadwal','tbpresensi_jadwal.id and tbpresensi_jadwal.id='.$cond['jadwal'])
+                                                ->fetch([
+                                                    'COUNT(tbpresensi_peserta.id) as jumlah',
+                                                    'tbpresensi_tpq.id as idTpq',
+                                                    ])
+                                                ->get();
+
                         break;
 
                     // case '' :
