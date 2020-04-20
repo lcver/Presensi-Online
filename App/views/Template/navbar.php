@@ -22,7 +22,7 @@
     <div class="navbar-nav ml-auto">
         <?php if(isset($_SESSION['presensi_adminsession'])) : ?>
         <li class="nav-item dropdown">
-            <a href="<?=BASEURL?>admin/auth_logout" class="nav-link text-danger">
+            <a href="<?=BASEURL?>auth/__unsetAuthorize" class="nav-link text-danger">
               logout
             </a>
         </li>

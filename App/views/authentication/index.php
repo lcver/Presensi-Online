@@ -40,7 +40,7 @@
     <!-- /.lockscreen-image -->
 
     <!-- lockscreen credentials (contains the form) -->
-    <form action="<?=BASEURL?>admin/auth_entry_password" method="post" class="lockscreen-credentials">
+    <form action="<?=BASEURL?>auth/authorization" method="post" class="lockscreen-credentials">
       <div class="input-group">
         <input type="password" class="form-control <?=isset($_SESSION['presensi_wrong']) ? 'is-invalid' : '' ; ?>" placeholder="password" name="presensi_password">
 
