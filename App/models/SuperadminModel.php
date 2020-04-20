@@ -31,6 +31,8 @@ class SuperadminModel extends Controller
             }
             public function auth($request)
             {
+                $db = new Database;
+                $request = $db->escapeString($request);
                 return Database::table('tbpresensi_superadmin')
                                     ->where('password',$request)
                                     ->get();
