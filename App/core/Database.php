@@ -385,4 +385,10 @@ class Database
         
     }
 
+    public function escapeString($string)
+    {
+        $result = $this->mysqli->real_escape_string($string);
+        return $result;
+    }
+
 }
