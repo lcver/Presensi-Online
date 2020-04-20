@@ -9,30 +9,21 @@ class Sesi extends Controller
 {
     private $data;
 
-    public function __destruct()
-    {
-        $this->view('admin/sesi',$this->data,'admin');
-    }
-
     public function index()
     {
         $result = $this->model('SesiModel')->create();
-        $this->data['sesi'] = Helper::null_checker($result);
+        $data['sesi'] = Helper::null_checker($result);
 
         $result = $this->model('JadwalModel')->create();
-        $this->data['jadwal'] = Helper::null_checker($result);        
+        $data['jadwal'] = Helper::null_checker($result); 
+
+        $this->view('admin/sesi',$data,'admin');       
     }
 
-    public function __setSesi()
+    public function __setSesi(Array $data)
     {
         if(isset($_SESSION['presensi_adminsession'])){
-            $data = [
-                'sesi' => $_POST['presensi_sesi'],
-                'idJadwal' => $_POST['presensi_jadwal'],
-                'waktu_mulai' => $_POST['presensi_waktu_mulai'] ,
-                'waktu_selesai' => $_POST['presensi_waktu_selesai']
-            ];
-            // var_dump($data);die();
+            
             $res = $this->model('SesiModel')->store($data);
 
             if($res===true){
@@ -44,19 +35,19 @@ class Sesi extends Controller
         header('location:'.BASEURL.'admin/sesi');
     }
 
-    public function __setActive()
+    public function __setActive(String $id)
     {
         if(isset($_SESSION['presensi_adminsession'])){
-            $res = $this->model('SesiModel')->update($_POST['presensi_jadwal'],['status'=>2]);
+            $res = $this->model('SesiModel')->update($id,['status'=>2]);
             if($res!==true) echo "gagal";
         }
         header('location:'.BASEURL.'admin');
     }
 
-    public function __setInactive()
+    public function __setInactive(String $id)
     {
         if(isset($_SESSION['presensi_adminsession'])){
-            $res = $this->model('SesiModel')->update($_POST['id'],['status'=>3]);
+            $res = $this->model('SesiModel')->update($id,['status'=>3]);
             if($res!==true):
                 echo "gagal";
             else:
@@ -65,27 +56,27 @@ class Sesi extends Controller
         }
     }
 
-    public function __setAuto()
+    public function __setAuto(String $id)
     {
         if(isset($_SESSION['presensi_adminsession'])){
-            $res = $this->model('SesiModel')->show('byId',$_POST['id']);
+            $res = $this->model('SesiModel')->show('byId',$id);
 
             // check last status
             $data = $res['auto_active']=='inactive' ? 'active' : 'inactive';
             $data = ['auto_active'=>$data];
 
-            $res = $this->model('SuperadminModel')->update($_POST['id'],$data);
+            $res = $this->model('SuperadminModel')->update($id,$data);
             if($res!==true){
                 echo "isn't switch";
             }
         }
     }
 
-    public function delete()
+    public function delete(String $id)
     {
         if(isset($_SESSION['presensi_adminsession']))
         {
-            $condition = ['id'=>$_POST['id']];
+            $condition = ['id'=>$id];
             $res = $this->model('SesiModel')->destroy($condition);
             if($res!==true)
             {

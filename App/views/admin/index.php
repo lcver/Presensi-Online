@@ -10,8 +10,8 @@
                         <td><?= date_format(date_create($d['tanggal']),'d F Y')?></td>
                         <td>Sedang aktif</td>
                         <td>
-                            <!-- <button class="btn btn-light" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/inactive_jadwal')" >pause</button> -->
-                            <button class="btn btn-danger" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/inactive_sesi')" >selesai</button>
+                            <!-- <button class="btn btn-light" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?php//$d['id']?>,'<?php//BASEURL?>admin/inactive_jadwal')" >pause</button> -->
+                            <button class="btn btn-danger" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/sesi/nonaktif')" >selesai</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -39,7 +39,7 @@
                     <td><?=date_format(date_create($d['tanggal']),'d,F Y')?></td>
                     <td><?=$d['waktu_mulai']?> - <?= $d['waktu_selesai']?></td>
                     <td>
-                        <form action="<?=BASEURL?>admin/activated_sesi" method="post">
+                        <form action="<?=BASEURL?>admin/sesi/aktivasi" method="post">
                             <input type="hidden" class="d-none" name="presensi_jadwal" value="<?=$d['id']?>">
                             <button type="submit" class="btn btn-primary" >Aktif</button>
                         </form>

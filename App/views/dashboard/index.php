@@ -59,6 +59,9 @@
                 <h3 class="text-danger">Sesi Belum Dimulai</h3>
             <?php endif;?>
         </div>
+        <div class="card-footer">
+            <a href="" class="btn btn-primary">Lihat Absensi Sebelumnya</a>
+        </div>
     </div>
     <!-- /.card -->
 </div>

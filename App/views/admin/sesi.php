@@ -9,7 +9,7 @@
         <div class="card-body">
             <div class="col-md-12">
                 <div class="form-group">
-                    <form action="<?=BASEURL?>admin/set_sesi" method="post">
+                    <form action="<?=BASEURL?>admin/sesi/set" method="post">
                         <div class="form-group">
                             <label class="text-md">Jadwal</label>
                             <select class="custom-select" name="presensi_jadwal">
@@ -55,10 +55,10 @@
         <?php $no=1; foreach ($data['sesi'] as $d) :?>
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="alert alert-info alert-dismissible" >
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/delete_sesi')" >&times;</button>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/sesi/delete')" >&times;</button>
                     <span class="jadwal-card">
                         <i class="icon fas fa-calendar"></i>
-                        <a href="<?=BASEURL?>admin/jadwal_detail/<?=$d['id']?>" class="text-lg">
+                        <a href="<?=BASEURL?>admin/jadwal/detail/<?=$d['id']?>" class="text-lg">
                             <?= $d['sesi'] ?>
                         </a>
                     </span>

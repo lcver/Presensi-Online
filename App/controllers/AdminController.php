@@ -54,76 +54,94 @@ class AdminController extends Controller
      * Jadwal Page
      * ----------------------------------------------------------
      */
-    public function jadwal()
+    public function jadwal($param = null)
     {
         $jadwal = new \Admin\Jadwal;
-        $jadwal->index();
-        return $jadwal;
-    }
+        switch ($param) {
+            case 'set':
+                if(isset($_POST['presensi_tanggal'])):
+                    $data = ['tanggal'=>$_POST['presensi_tanggal']];
+                    $jadwal->__setJadwal($data);
+                else:
+                    header('location:'.BASEURL.'admin/jadwal');
+                endif;
 
-    public function set_jadwal()
-    {
-        $jadwal = $this->jadwal();
-        $jadwal->__setJadwal();
-    }
+                break;
+            case 'aktivasi':
+                if(isset($_POST['id'])):
+                    $jadwal->__setActive($_POST['id']);
+                else:
+                    header('location:'.BASEURL.'admin/jadwal');
+                endif;
+                
+                break;
+            case 'nonaktif':
+                if(isset($_POST['id'])):
+                    $jadwal->__setInactive($_POST['id']);
+                else:
+                    header('location:'.BASEURL.'admin/jadwal');
+                endif;
 
-    public function activated_jadwal()
-    {
-        $jadwal = $this->jadwal();
-        $jadwal->__setActive();
-    }
+                break;
+            case 'delete':
+                if(isset($_POST['id'])):
+                    $jadwal->delete($_POST['id']);
+                else:
+                    header('location:'.BASEURL.'admin/jadwal');
+                endif;
 
-    public function inactive_jadwal()
-    {
-        $jadwal = $this->jadwal();
-        $jadwal->__setInactive();
-    }
-
-    public function delete_jadwal()
-    {
-        $jadwal = $this->jadwal();
-        $jadwal->delete();
+                break;
+            default:
+                $jadwal->index();
+                break;
+        }
     }
 
     /**
      * Sesi Page
      * ----------------------------------------------------------
      */
-    public function sesi()
+    public function sesi($param = null)
     {
         $sesi = new \Admin\Sesi;
-        $sesi->index();
-        return $sesi;
-    }
+        switch ($param) {
+            case 'set':
+                if(isset($_POST['presensi_sesi']) && $_POST['presensi_jadwal']):
+                    $data = [
+                        'sesi' => $_POST['presensi_sesi'],
+                        'idJadwal' => $_POST['presensi_jadwal'],
+                        'waktu_mulai' => $_POST['presensi_waktu_mulai'] ,
+                        'waktu_selesai' => $_POST['presensi_waktu_selesai']
+                    ];
+                    $sesi->__setSesi($data);
+                endif;
 
-    public function set_sesi()
-    {
-        $sesi = $this->sesi();
-        $sesi->__setSesi();
-    }
-
-    public function activated_sesi()
-    {
-        $sesi = $this->sesi();
-        $sesi->__setActive();
-    }
-
-    public function inactive_sesi()
-    {
-        $sesi = $this->sesi();
-        $sesi->__setInactive();
-    }
-
-    public function auto_sesi()
-    {
-        $sesi = $this->sesi();
-        $sesi->__setAuto();
-    }
-
-    public function delete_sesi()
-    {
-        $sesi = $this->sesi();
-        $sesi->delete();
+                break;
+            case 'aktivasi':
+                if(isset($_POST['presensi_jadwal'])):
+                    $sesi->__setActive($_POST['presensi_jadwal']);
+                endif;
+                break;
+            case 'nonaktif':
+                if(isset($_POST['id'])):
+                    $sesi->__setInactive($_POST['id']);
+                endif;
+                break;
+            case 'setAuto':
+                if(isset($_POST['id'])):
+                    $sesi->__setAuto($_POST['id']);
+                endif;
+                break;
+            case 'delete':
+                if(isset(($_POST['id']))):
+                    $sesi->delete(($_POST['id']));
+                endif;
+                break;
+            
+            default:
+                $sesi->index();
+                break;
+        }
     }
 
     public function countdown_jadwal()

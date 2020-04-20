@@ -13,8 +13,8 @@
                     <?php foreach ($data['jadwal'] as $d) :?>
                         <div class="card <?=$d['status']==2 ? 'bg-primary' : '';?>">
                             <div class="card-body">
-                                <button type="button" class="btn btn-tool float-right" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/delete_jadwal')" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                                <form action="<?=BASEURL?>admin/<?=$d['status']==2 ? 'inactive_jadwal' : 'activated_jadwal' ;?>" method="post">
+                                <button type="button" class="btn btn-tool float-right" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/jadwal/delete')" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                <form action="<?=BASEURL?>admin/jadwal/<?=$d['status']==2 ? 'nonaktif' : 'aktivasi' ;?>" method="post">
                                     <input type="hidden" name="id" value="<?=$d['id']?>">
                                     Tanggal : <?=date_format(date_create($d['tanggal']),'D, d-m-Y')?>
                                     <?php if($d['status']==1) :?>
@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <form action="<?=BASEURL?>admin/set_jadwal" method="post">
+                            <form action="<?=BASEURL?>admin/jadwal/set" method="post">
                                 <!-- <ul class="list-unstyled m-0">
                                     <li>
                                         <span class="bg-primary pl-1 pr-1">Sesi 1 : 08.00 ~ 09.00</span>
