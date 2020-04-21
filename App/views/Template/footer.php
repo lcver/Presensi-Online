@@ -39,6 +39,10 @@
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/demo.js"></script>
+<!-- SweetAlert2 -->
+<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/toastr/toastr.min.js"></script>
 <script>
   function pieChart(api)
   {
@@ -97,13 +101,51 @@
       data: data
     });
   }
-  function btnAjax(id, req)
+  function btnAjax(id, req, type=null)
   {
-    // console.log('delete button');
-    $.post(req,
-        {id:id}
-    );
-    $('#card-active').addClass('d-none');
+    // var res = typeof req;
+    var url = req;
+    if(type == null)
+    {
+      $.post(req, {id:id} );
+      $('#card-active'+id).addClass('d-none');
+      $('#modal_delete').modal('hide');
+    }else{
+      switch (type) {
+        case 'delete':
+
+          $('#modal_delete').modal();
+          $('#modal_delete').on('hidden.bs.modal',function(){
+            $('#del_btn').remove();
+          })
+          $('#modal_delete_btn').append('<button type="button" id="del_btn" class="btn btn-danger float-left" onclick="deleteButton('+id+',&#039;'+url+'&#039;)">Hapus</button>');
+          break;
+      }
+    }
+  }
+
+const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+  function deleteButton(id,req)
+  {
+
+    var data = {id:id};
+    $.ajax({
+      type: "POST",
+      url: req,
+      data: data,
+      success: function() {
+        $('#modal_delete').modal('hide');
+        $('#card-active'+id).addClass('d-none');
+        toastr.error('Jadwal berhasil dihapus');
+      }
+    });
+    // var jqxhr =  $.post(req, {id:id})
   }
 </script>
 </body>

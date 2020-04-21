@@ -31,6 +31,7 @@ class Controller
                 'Template/navbar',
                 'Template/sidebar',
                 $view,
+                'Template/modal/index',
                 'Template/footer'
             ];
         }else{

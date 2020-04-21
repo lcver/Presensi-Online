@@ -18,12 +18,27 @@ class Jadwal extends Controller
     public function __setJadwal(Array $data)
     {
         if(isset($_SESSION['presensi_adminsession'])){
-            $res = $this->model('JadwalModel')->store($data);
-            // var_dump($res);die();
-            if($res===true){
-                Flasher::setFlash('Jadwal Berhasil Ditambahkan',true);
+            $res = $this->model('JadwalModel')->create();
+            var_dump($data);
+            $jadwal = Helper::null_checker($res);
+            $check_jadwal = 0;
+            foreach ($jadwal as $d) {
+                if($data['tanggal'] === $d['tanggal'])
+                    $check_jadwal++;
+            }
+
+
+            if($check_jadwal === 0 || $check_jadwal <> 1)
+            {
+                $res = $this->model('JadwalModel')->store($data);
+                // var_dump($res);die();
+                if($res===true){
+                    Flasher::setFlash('Jadwal Berhasil Ditambahkan',true);
+                }else{
+                    Flasher::setFlash('Jadwal Gagal Ditambahkan',false);
+                }
             }else{
-                Flasher::setFlash('Jadwal Gagal Ditambahkan',false);
+                Flasher::setFlash('Jadwal sudah tersedia',false);
             }
         }
         header('location:'.BASEURL.'admin/jadwal');

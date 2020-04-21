@@ -7,19 +7,19 @@
             <div class="card">
                 <div class="card-header bg-primary">
                     Daftar Jadwal
-                    <?= date_format(date_create('2020-04-16 07:09:34'),'H:i:s:a');?>
                 </div>
                 <div class="card-body overflow-auto" style="max-height:50vh">
                     <?php if(isset($data['jadwal'])) : ?>
                     <?php foreach ($data['jadwal'] as $d) :?>
-                        <div class="card <?=$d['status']==2 ? 'bg-primary' : '';?>">
+                        <div class="card <?=$d['status']==2 ? 'bg-primary' : '';?>" id="card-active<?=$d['id']?>">
                             <div class="card-body">
-                                <button type="button" class="btn btn-tool float-right" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/jadwal/delete')" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                <!-- <button type="button" class="btn btn-tool float-right" onclick="btnAjax(<php//$d['id']?>,'<php//BASEURL?>admin/jadwal/delete')" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
+                                <button class="btn btn-danger btn-sm ml-2 float-right" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/jadwal/delete','delete')" data-toggle="modal" data-target="#modal-sm"><i class="fas fa-trash-alt"></i></button>
                                 <form action="<?=BASEURL?>admin/jadwal/<?=$d['status']==2 ? 'nonaktif' : 'aktivasi' ;?>" method="post">
                                     <input type="hidden" name="id" value="<?=$d['id']?>">
                                     Tanggal : <?=date_format(date_create($d['tanggal']),'D, d-m-Y')?>
                                     <?php if($d['status']==1) :?>
-                                            <button type="submit" class="btn btn-primary btn-sm float-right">Enable</button>
+                                        <button type="submit" class="btn btn-primary btn-sm float-right">Enable</button>
                                     <?php else: ?>
                                         <button class="btn btn-danger btn-sm float-right">Disable</button>
                                     <?php endif; ?>
