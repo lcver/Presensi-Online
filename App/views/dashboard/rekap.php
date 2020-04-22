@@ -15,10 +15,11 @@
                 <a href="#" class="">
                 <div class="info-box">
                     <span class="info-box-icon bg-primary" style="background:#<?=$bgcolor[$a]?>!important">
-                        <i class="fas fa-calendar-times"></i>
+                        <i class="fas fa-calendar-alt"></i>
                     </span>
                     <div class="info-box-content">
-                        <span class="info-box-text text-md mt-3">Jadwal <?=date_format(date_create($d['tanggal']),'d/m/Y')?></span>
+                        <span class="info-box-text text-md">Jadwal <?=date_format(date_create($d['tanggal']),'d/m/Y')?></span>
+                        <span class="info-box-number text-sm">Total Presensi : <?=$d['total']?></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
