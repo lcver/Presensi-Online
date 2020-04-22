@@ -14,7 +14,7 @@
                         <div class="card <?=$d['status']==2 ? 'bg-primary' : '';?>" id="card-active<?=$d['id']?>">
                             <div class="card-body">
                                 <!-- <button type="button" class="btn btn-tool float-right" onclick="btnAjax(<php//$d['id']?>,'<php//BASEURL?>admin/jadwal/delete')" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
-                                <button class="btn btn-danger btn-sm ml-2 float-right" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/jadwal/delete','delete')" data-toggle="modal" data-target="#modal-sm"><i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-danger btn-sm ml-2 float-right" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/jadwal/delete','delete')"><i class="fas fa-trash-alt"></i></button>
                                 <form action="<?=BASEURL?>admin/jadwal/<?=$d['status']==2 ? 'nonaktif' : 'aktivasi' ;?>" method="post">
                                     <input type="hidden" name="id" value="<?=$d['id']?>">
                                     Tanggal : <?=date_format(date_create($d['tanggal']),'D, d-m-Y')?>

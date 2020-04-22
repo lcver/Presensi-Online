@@ -50,6 +50,11 @@ class JadwalModel extends Controller
                                                         ->fetch(['tanggal'])
                                                         ->get();
                         break;
+                    case 'get_by_id' :
+                        $result = Database::table('tbpresensi_jadwal')
+                                                    ->where('id',$cond['id'])
+                                                    ->get();
+                        break;
                     default:
                         # code...
                         break;

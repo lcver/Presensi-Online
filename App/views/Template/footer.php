@@ -142,7 +142,7 @@ const Toast = Swal.mixin({
       success: function() {
         $('#modal_delete').modal('hide');
         $('#card-active'+id).addClass('d-none');
-        toastr.error('Jadwal berhasil dihapus');
+        toastr.error('Data berhasil dihapus');
       }
     });
     // var jqxhr =  $.post(req, {id:id})

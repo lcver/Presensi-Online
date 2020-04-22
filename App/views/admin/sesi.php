@@ -53,14 +53,12 @@
         <div class="row">
         <?php if(isset($data['sesi'])) : ?>
         <?php $no=1; foreach ($data['sesi'] as $d) :?>
-            <div class="col-md-3 col-sm-6 col-12">
-                <div class="alert alert-info alert-dismissible" >
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/sesi/delete')" >&times;</button>
+            <div class="col-md-4">
+                <div class="alert alert-info alert-dismissible" id="card-active<?=$d['id']?>">
+                        <button type="button" class="close" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/sesi/delete','delete')" >&times;</button>
                     <span class="jadwal-card">
                         <i class="icon fas fa-calendar"></i>
-                        <a href="<?=BASEURL?>admin/jadwal/detail/<?=$d['id']?>" class="text-lg">
                             <?= $d['sesi'] ?>
-                        </a>
                     </span>
                     <p class="schedule">
                         <?= date_format(date_create($d['tanggal']),'d,F Y')?>

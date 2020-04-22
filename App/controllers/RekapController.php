@@ -44,6 +44,22 @@ class RekapController extends Controller
 
     public function data($param)
     {
-        echo $param;
+        $id = ['id'=>$param];
+        $result = $this->model('JadwalModel')->show('get_by_id',$id);
+        $jadwal = Helper::null_checker($result);
+        foreach ($jadwal as $d) {
+            $jadwal = $d['id'];
+        }
+        
+        $result = $this->model('TpqModel')->create();
+        $tpq = Helper::null_checker($result);
+
+        foreach ($tpq as $d) {
+            $condition = [
+                'id'=> $d['id'],
+                'idJadwal'=>$jadwal
+            ];
+            $result = $this->model('PesertaModel')->show('get_by_id_tpq_jadwal',$condition);
+        }
     }
 }
