@@ -9,7 +9,7 @@ class Jadwal extends Controller
 {
     public function index()
     {
-        $result = $this->model('JadwalModel')->create();
+        $result = $this->model('JadwalModel')->show('get_three_last');
         $data['jadwal'] = Helper::null_checker($result);
 
         parent::view('admin/jadwal',$data,'admin');

@@ -3,21 +3,29 @@
         <?=Flasher::get()?>
     </div>
     <div class="row">
-        <div class="col-md-5">
-            <div class="card">
+        <div class="col-md-4 bg-transparent" style="border:1px solid transparent;">
+            <!-- <div class="card">
                 <div class="card-header bg-primary">
                     Daftar Jadwal
+                    <a href="">
+                        <span class="float-right">more</span>
+                    </a>
                 </div>
-                <div class="card-body overflow-auto" style="max-height:50vh">
+                <div class="card-body"> -->
+                    <div class="text-md bg-primary p-2 mb-2 small-box">
+                        Daftar Jadwal
+                    </div>
                     <?php if(isset($data['jadwal'])) : ?>
                     <?php foreach ($data['jadwal'] as $d) :?>
                         <div class="card <?=$d['status']==2 ? 'bg-primary' : '';?>" id="card-active<?=$d['id']?>">
-                            <div class="card-body">
+                            <div class="card-body p-2">
                                 <!-- <button type="button" class="btn btn-tool float-right" onclick="btnAjax(<php//$d['id']?>,'<php//BASEURL?>admin/jadwal/delete')" data-card-widget="remove"><i class="fas fa-times"></i></button> -->
                                 <button class="btn btn-danger btn-sm ml-2 float-right" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/jadwal/delete','delete')"><i class="fas fa-trash-alt"></i></button>
                                 <form action="<?=BASEURL?>admin/jadwal/<?=$d['status']==2 ? 'nonaktif' : 'aktivasi' ;?>" method="post">
                                     <input type="hidden" name="id" value="<?=$d['id']?>">
-                                    Tanggal : <?=date_format(date_create($d['tanggal']),'D, d-m-Y')?>
+                                    <div class="mt-1 float-left">
+                                        <?=date_format(date_create($d['tanggal']),'D, d-m-Y')?>
+                                    </div>
                                     <?php if($d['status']==1) :?>
                                         <button type="submit" class="btn btn-primary btn-sm float-right">Enable</button>
                                     <?php else: ?>
@@ -28,8 +36,11 @@
                         </div>
                     <?php endforeach;?>
                     <?php endif;?>
-                </div>
-            </div>
+                    <div class="col-md-12 text-right">
+                        <a href="">Lihat semua jadwal</a>
+                    </div>
+                <!-- </div>
+            </div> -->
             <!-- /.card -->
         </div>
         <!-- /.col -->

@@ -55,6 +55,11 @@ class JadwalModel extends Controller
                                                     ->where('id',$cond['id'])
                                                     ->get();
                         break;
+                    case 'get_three_last' :
+                        $result = Database::table('tbpresensi_jadwal')
+                                                    ->orderBy('id','desc limit 3')
+                                                    ->get();
+                        break;
                     default:
                         # code...
                         break;
