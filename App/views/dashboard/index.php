@@ -60,7 +60,7 @@
             <?php endif;?>
         </div>
         <div class="card-footer">
-            <a href="<?=BASEURL?>rekap" class="btn btn-primary">Lihat Absensi Sebelumnya</a>
+            <a href="<?=BASEURL?>rekap" class="btn btn-primary">Absensi Sebelumnya</a>
         </div>
     </div>
     <!-- /.card -->
