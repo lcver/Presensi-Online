@@ -65,5 +65,5 @@
 </div>
 <script>
     // 'http://localhost/project/Abdar/public/pengurus/jumlah'
-    window.onload = function(event) {pieChart('<?=BASEURL?>rekap/jumlah')}
+    window.onload = function(event) {pieChart('<?=BASEURL?>rekap/jumlah/<?=$data['idJadwal']?>')}
 </script>

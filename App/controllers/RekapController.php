@@ -48,7 +48,7 @@ class RekapController extends Controller
         $result = $this->model('JadwalModel')->show('get_by_id',$id);
         $jadwal = Helper::null_checker($result);
         foreach ($jadwal as $d) {
-            $jadwal = $d['id'];
+            $data['idJadwal'] = $d['id'];
         }
         
         $result = $this->model('TpqModel')->create();
@@ -58,7 +58,7 @@ class RekapController extends Controller
         foreach ($tpq as $d) {
             $condition = [
                 'id'=> $d['id'],
-                'idJadwal'=>$jadwal
+                'idJadwal'=>$data['idJadwal']
             ];
 
             $data['tpq'][] = ['tpq'=>$d['tpq'],'desa'=>$d['desa']];
@@ -91,11 +91,13 @@ class RekapController extends Controller
         // var_dump($result);
     }
 
-    public function jumlah()
+    public function jumlah($param)
     {
         $dataTPQ = $this->model('TpqModel')->create();
 
-        $res = $this->model('JadwalModel')->show('get_active_jadwal');
+        $id = ['id'=>$param];
+        $res = $this->model('JadwalModel')->show('get_by_id',$id);
+        // $res = $this->model('JadwalModel')->show('get_active_jadwal');
 
         $resData=[];
         $total=0;
