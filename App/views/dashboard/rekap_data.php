@@ -22,16 +22,14 @@
                 <div class="col-md-7">
                     <div class="row">
                     <?php $bgcolor = ['6a8caf','4baea0','f67280','99d8d0','be9fe1','eb8242','9cf196','484c7f']; ?>
-                        <?php $counData = count($data['tpq']); for ($a=0; $a < $counData; $a++) :
-                            var_dump($data['tpq'][$a]);
-                            ?>
+                        <?php $counData = count($data['tpq']); for ($a=0; $a < $counData; $a++) :?>
                         <div class="col-md-6">
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary" style="background:#<?=$bgcolor[$a]?>!important">
                                     <?=$data['jumlahdata'][$a]['jumlah']?>
                                 </span>
                                 <div class="info-box-content">
-                                    <a href="<?=BASEURL?>pengurus/tpq/<?=$data['jumlahdata'][$a]['idtpq']?>">
+                                    <a href="#">
                                     <span class="info-box-text">TPQ <?=$data['tpq'][$a]['tpq']?></span>
                                     </a>
                                     <span class="info-box-number"><?=$data['tpq'][$a]['desa']?></span>
