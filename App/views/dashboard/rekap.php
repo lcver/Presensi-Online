@@ -12,7 +12,7 @@
         <div class="row">
         <?php foreach ($data as $d) : ?>
             <div class="col-md-4">
-                <a href="#" class="">
+                <a href="<?=BASEURL?>rekap/data/<?=$d['idJadwal']?>" class="">
                 <div class="info-box">
                     <span class="info-box-icon bg-primary" style="background:#<?=$bgcolor[$a]?>!important">
                         <i class="fas fa-calendar-alt"></i>

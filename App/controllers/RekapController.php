@@ -54,12 +54,70 @@ class RekapController extends Controller
         $result = $this->model('TpqModel')->create();
         $tpq = Helper::null_checker($result);
 
+        $total=0;
         foreach ($tpq as $d) {
             $condition = [
                 'id'=> $d['id'],
                 'idJadwal'=>$jadwal
             ];
-            $result = $this->model('PesertaModel')->show('get_by_id_tpq_jadwal',$condition);
+
+            $data['tpq'][] = ['tpq'=>$d['tpq'],'desa'=>$d['desa']];
+
+            $dataPeserta = $this->model('PesertaModel')->show('get_by_id_tpq_jadwal',$condition);
+            
+            if($dataPeserta!==NULL){
+                $countData = isset($dataPeserta['nama']) ? 1 : count($dataPeserta);
+                // $countData = count($dataPeserta);
+                $resData[] = [
+                    'idtpq'=> $d['id'],
+                    'jumlah'=>$countData
+                ];
+                $subtotal = $countData;
+                $total += $subtotal;
+            }else{
+                $resData[] = [
+                    'idtpq'=> $d['id'],
+                    'jumlah'=> 0
+                ];
+            }
         }
+
+        // die();
+        $data['total'] = $total;
+        $data['jumlahdata'] = $resData;
+
+        
+        $this->view('dashboard/rekap_data', $data);
+        // var_dump($result);
+    }
+
+    public function jumlah()
+    {
+        $dataTPQ = $this->model('TpqModel')->create();
+
+        $res = $this->model('JadwalModel')->show('get_active_jadwal');
+
+        $resData=[];
+        $total=0;
+        foreach ($dataTPQ as $d) {
+            $condition = [
+                'id'=> $d['id'],
+                'idJadwal'=> $res['id']
+            ];
+            $dataPeserta = $this->model('PesertaModel')->show('get_by_id_tpq_jadwal',$condition);
+
+            if($dataPeserta!==NULL){
+                $countData = isset($dataPeserta['nama']) ? 1 : count($dataPeserta);
+                // $countData = count($dataPeserta);
+                $resData[] = $countData;
+                $subtotal = $countData;
+                $total += $subtotal;
+            }else{
+                $resData[] = 0;
+            }
+        }
+
+        // var_dump($resData);
+        echo json_encode($resData);
     }
 }
