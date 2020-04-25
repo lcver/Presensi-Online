@@ -1,4 +1,10 @@
 <div class="pb-3">
+<div class="mb-3 pt-3">
+    <h5><a href="<?=BASEURL?>rekap">
+        <i class="fas fa-chevron-left" ></i>
+        Kembali
+    </a></h5>
+</div>
     <div class="card">
         <div class="card-body">
             <div class="row">
@@ -29,7 +35,7 @@
                                     <?=$data['jumlahdata'][$a]['jumlah']?>
                                 </span>
                                 <div class="info-box-content">
-                                    <a href="#">
+                                    <a href="<?=BASEURL?>rekap/tpq/<?=$data['idJadwal']?>/<?=$data['jumlahdata'][$a]['idtpq']?>">
                                     <span class="info-box-text">TPQ <?=$data['tpq'][$a]['tpq']?></span>
                                     </a>
                                     <span class="info-box-number"><?=$data['tpq'][$a]['desa']?></span>

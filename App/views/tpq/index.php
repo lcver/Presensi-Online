@@ -1,6 +1,6 @@
 <div class="container">
     <div class="mb-3 pt-3">
-        <h5><a href="<?=BASEURL?>pengurus">
+        <h5><a href="<?=isset($data['rekap']) ? BASEURL."rekap" : BASEURL."pengurus" ;?>">
             <i class="fas fa-chevron-left" ></i>
             Kembali
         </a></h5>
@@ -8,7 +8,7 @@
     <div class="card">
         <div class="card-body">
             <?php foreach ($data['tpq'] as $d) : ?>
-            <h3>TPQ <?=$d['tpq']?></h3>
+            <h3><?=isset($data['rekap']) ? $data['rekap']." TPQ" : "TPQ" ;?> <?=$d['tpq']?></h3>
             <?php endforeach; ?>
             <table class="table table-striped">
                 <thead>

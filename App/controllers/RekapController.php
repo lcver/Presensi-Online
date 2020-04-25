@@ -42,6 +42,25 @@ class RekapController extends Controller
         $this->view('dashboard/rekap',$data);
     }
 
+    public function tpq($jadwal, $tpq)
+    {
+        $condition = [
+            'id' => $tpq,
+            'idJadwal' => $jadwal
+        ];
+        
+        $result = $this->model('PesertaModel')->show('get_by_id_tpq_jadwal',$condition);
+        $data['peserta'] = Helper::null_checker($result);
+
+
+        $result = $this->model('TpqModel')->show($tpq);
+        $data['tpq'] = Helper::null_checker($result);
+        $data['rekap'] = "Rekap Data";
+        
+        
+        $this->view('tpq/index',$data);
+    }
+
     public function data($param)
     {
         $id = ['id'=>$param];
