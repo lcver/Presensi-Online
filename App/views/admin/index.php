@@ -89,7 +89,7 @@
                 <?php endif;?>
                         <i class="icon fas fa-calendar"></i>
                             <span class="text-lg">
-                                <a href="<?=BASEURL?>admin/jadwal_detail/<?=$d['id']?>" class=" text-decoration-none <?= $d['status']==1 ? 'text-dark' : ''; ?>">
+                                <a href="<?=BASEURL?>jadwal/detail/<?=$d['id']?>" class=" text-decoration-none <?= $d['status']==1 ? 'text-dark' : ''; ?>">
                                     <?= $d['sesi'] ?>
                                 </a>
                         </span>

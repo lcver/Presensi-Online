@@ -63,6 +63,11 @@ class Jadwal extends Controller
         header('location:'.BASEURL.'admin/jadwal');
     }
 
+    public function detail($param)
+    {
+
+    }
+
     public function delete(String $id)
     {
         if(isset($_SESSION['presensi_adminsession']))
