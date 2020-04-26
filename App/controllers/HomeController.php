@@ -26,8 +26,10 @@ class HomeController extends Controller
         // filter nama
         $nama = strtolower($_POST['presensi_nama']); // small word
         $nama = ucwords($nama); // uppercase every first alphabet
+        $nama = trim($nama);
         $nama = explode(' ',$nama); // explode to array
         $nama = preg_replace("/[^a-zA-Z]/", "", $nama); // check thread character
+        $nama = preg_replace("/\s+/","",$nama);
         $nama = implode( ' ',$nama); // implode to string
 
         $postData = [
@@ -37,6 +39,16 @@ class HomeController extends Controller
             'idJadwal'=>$_POST['presensi_idJadwal']
         ];
         // var_dump($postData);
+
+
+        // Filter empty
+        if(empty($postData['nama']) || is_null($postData['jenis_kelamin']))
+        {
+            Flasher::setFlash('Kolom harus diisi semua cuy', false);
+            header('location:'.BASEURL);
+            return false;
+        }
+
 
         $res = $this->model('PesertaModel')->show('filtering',$postData);
         // var_dump($res);
