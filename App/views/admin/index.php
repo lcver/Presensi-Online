@@ -1,10 +1,10 @@
 <?php if($data['activated']!==null) : ?>
-<div class="col-md-7" id="card-active">
+<?php foreach ($data['activated'] as $d) : ?>
+<div class="col-md-7" id="card-active<?=$d['id']?>">
     <div class="card">
         <div class="card-body">
             <table class="table table-striped">
                 <tbody>
-                <?php foreach ($data['activated'] as $d) : ?>
                     <tr>
                         <td><?=$d['sesi']?></td>
                         <td><?= date_format(date_create($d['tanggal']),'d F Y')?></td>
@@ -14,12 +14,12 @@
                             <button class="btn btn-danger" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/sesi/nonaktif')" >selesai</button>
                         </td>
                     </tr>
-                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<?php endforeach; ?>
 <?php endif;?>
 
 <div class="card">
