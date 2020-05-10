@@ -8,7 +8,7 @@ require_once 'config/config.php';
 /**
  * call autoload
  */
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 /**
  * 
