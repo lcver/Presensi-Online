@@ -14,7 +14,7 @@ class App
     public function  __construct()
     {
         $url = $this->parseURL();
-        $url[0] = ucwords($url[0]);
+        $url[0] = is_null($url) ? "" : ucwords($url[0]);
         // var_dump($url);
 
         /**
