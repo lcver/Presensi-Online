@@ -1,112 +1,355 @@
-<?php if($data['activated']!==null) : ?>
-<?php foreach ($data['activated'] as $d) : ?>
-<div class="col-md-7" id="card-active<?=$d['id']?>">
-    <div class="card">
-        <div class="card-body">
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <td><?=$d['sesi']?></td>
-                        <td><?= date_format(date_create($d['tanggal']),'d F Y')?></td>
-                        <td>Sedang aktif</td>
-                        <td>
-                            <!-- <button class="btn btn-light" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?php//$d['id']?>,'<?php//BASEURL?>admin/inactive_jadwal')" >pause</button> -->
-                            <button class="btn btn-danger" id="btn-inactive" data-dismiss="alert" aria-hidden="true" onclick="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/sesi/nonaktif')" >selesai</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box">
+        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+        <div class="info-box-content">
+        <span class="info-box-text">CPU Traffic</span>
+        <span class="info-box-number">
+            10
+            <small>%</small>
+        </span>
         </div>
+        <!-- /.info-box-content -->
     </div>
-</div>
-<?php endforeach; ?>
-<?php endif;?>
+    <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box mb-3">
+        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
-<div class="card">
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <th>Nama Sesi</th>
-                <th>Tanggal Sesi</th>
-                <th>Waktu</th>
-                <th>Action</th>
-            </thead>
-            <tbody>
-                <?php if(isset($data['set_sesi'])) : ?>
-                <?php foreach ($data['set_sesi'] as $d) : ?>
-                <tr>
-                    <td><?=$d['sesi']?></td>
-                    <td><?=date_format(date_create($d['tanggal']),'d,F Y')?></td>
-                    <td><?=$d['waktu_mulai']?> - <?= $d['waktu_selesai']?></td>
-                    <td>
-                        <form action="<?=BASEURL?>admin/sesi/aktivasi" method="post">
-                            <input type="hidden" class="d-none" name="presensi_jadwal" value="<?=$d['id']?>">
-                            <button type="submit" class="btn btn-primary" >Aktif</button>
-                        </form>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-                <?php else : ?>
-                    <tr>
-                        <td colspan="4">Belum ada sesi baru</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table> 
-        <!-- <div class="custom-control custom-checkbox float-right">
-            <input type="checkbox" class="custom-control-input" id="customCheckbox" onChange="btnAjax(<?=$d['id']?>,'<?=BASEURL?>admin/auto_jadwal')" <?=$d['auto_active']=='active' ? "checked" : "";?>>
-            <label for="customCheckbox" class="custom-control-label">Auto aktif</label>
-        </div> -->
-        <!-- <form action="<?php//BASEURL?>admin/auto_load" method="post">
-            <div class="form-group">
-                <label>Set Aktif Sesi</label>
-                <select class="custom-select" name="presensi_jadwal">
-                    <?php //foreach ($data['set_sesi'] as $d) : ?>
-                        <option value="<?php//$d['id']?>">Sesi <?php//$d['sesi']?> | (<?php// date_format(date_create($d['tanggal']),'d,F Y')?>)</option>
-                    <?php //endforeach; ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary float-right mt-3">Auto Active</button>
-            </div>
-        </form> -->
+        <div class="info-box-content">
+        <span class="info-box-text">Likes</span>
+        <span class="info-box-number">41,410</span>
+        </div>
+        <!-- /.info-box-content -->
     </div>
-</div>
+    <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
 
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">Jadwal Asrama</h4>
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box mb-3">
+        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+        <div class="info-box-content">
+        <span class="info-box-text">Sales</span>
+        <span class="info-box-number">760</span>
+        </div>
+        <!-- /.info-box-content -->
     </div>
-    <div class="card-body">
+    <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box mb-3">
+        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+        <div class="info-box-content">
+        <span class="info-box-text">New Members</span>
+        <span class="info-box-number">2,000</span>
+        </div>
+        <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+        <h5 class="card-title">Monthly Recap Report</h5>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+            </button>
+            <div class="btn-group">
+            <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                <i class="fas fa-wrench"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                <a href="#" class="dropdown-item">Action</a>
+                <a href="#" class="dropdown-item">Another action</a>
+                <a href="#" class="dropdown-item">Something else here</a>
+                <a class="dropdown-divider"></a>
+                <a href="#" class="dropdown-item">Separated link</a>
+            </div>
+            </div>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+            </button>
+        </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
         <div class="row">
-        <?php if(isset($data['sesi'])) : ?>
-        <?php $no=1; foreach ($data['sesi'] as $d) : ?>
-            <div class="col-md-3 col-sm-6 col-12">
-                <?php if($d['status']==3) : ?>
-                    <div class="alert alert-dark alert-dismissible" style="cursor:default;">
-                <?php else :?>
-                    <div class="alert <?= $d['status']==2 ? 'alert-primary' : 'shadow-sm border-primary';?> alert-dismissible" style="cursor:default;">
-                <?php endif;?>
-                        <i class="icon fas fa-calendar"></i>
-                            <span class="text-lg">
-                                <a href="<?=BASEURL?>jadwal/detail/<?=$d['id']?>" class=" text-decoration-none <?= $d['status']==1 ? 'text-dark' : ''; ?>">
-                                    <?= $d['sesi'] ?>
-                                </a>
-                        </span>
-                    <p class="schedule">
-                        <?= date_format(date_create($d['tanggal']),'d,F Y')?>
-                    </p>
-                    <p class="schedule" >
-                        <?= date_format(date_create($d['waktu_mulai']),'h.i a')?>
-                         s/d 
-                        <?= date_format(date_create($d['waktu_selesai']),'h.i a')?>
-                    </p>
+            <div class="col-md-8">
+            <p class="text-center">
+                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+            </p>
+
+            <div class="chart">
+                <!-- Sales Chart Canvas -->
+                <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
+            </div>
+            <!-- /.chart-responsive -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4">
+            <p class="text-center">
+                <strong>Goal Completion</strong>
+            </p>
+
+            <div class="progress-group">
+                Add Products to Cart
+                <span class="float-right"><b>160</b>/200</span>
+                <div class="progress progress-sm">
+                <div class="progress-bar bg-primary" style="width: 80%"></div>
                 </div>
             </div>
-        <?php
-            endforeach;
-            endif;
-        ?>
+            <!-- /.progress-group -->
+
+            <div class="progress-group">
+                Complete Purchase
+                <span class="float-right"><b>310</b>/400</span>
+                <div class="progress progress-sm">
+                <div class="progress-bar bg-danger" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <!-- /.progress-group -->
+            <div class="progress-group">
+                <span class="progress-text">Visit Premium Page</span>
+                <span class="float-right"><b>480</b>/800</span>
+                <div class="progress progress-sm">
+                <div class="progress-bar bg-success" style="width: 60%"></div>
+                </div>
+            </div>
+
+            <!-- /.progress-group -->
+            <div class="progress-group">
+                Send Inquiries
+                <span class="float-right"><b>250</b>/500</span>
+                <div class="progress progress-sm">
+                <div class="progress-bar bg-warning" style="width: 50%"></div>
+                </div>
+            </div>
+            <!-- /.progress-group -->
+            </div>
+            <!-- /.col -->
         </div>
+        <!-- /.row -->
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+        <div class="row">
+            <div class="col-sm-3 col-6">
+            <div class="description-block border-right">
+                <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
+                <h5 class="description-header">$35,210.43</h5>
+                <span class="description-text">TOTAL REVENUE</span>
+            </div>
+            <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-3 col-6">
+            <div class="description-block border-right">
+                <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
+                <h5 class="description-header">$10,390.90</h5>
+                <span class="description-text">TOTAL COST</span>
+            </div>
+            <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-3 col-6">
+            <div class="description-block border-right">
+                <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
+                <h5 class="description-header">$24,813.53</h5>
+                <span class="description-text">TOTAL PROFIT</span>
+            </div>
+            <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-3 col-6">
+            <div class="description-block">
+                <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
+                <h5 class="description-header">1200</h5>
+                <span class="description-text">GOAL COMPLETIONS</span>
+            </div>
+            <!-- /.description-block -->
+            </div>
+        </div>
+        <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
     </div>
+    <!-- /.card -->
+    </div>
+    <!-- /.col -->
 </div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header border-0">
+            <h3 class="card-title">Products</h3>
+            <div class="card-tools">
+                <a href="#" class="btn btn-tool btn-sm">
+                <i class="fas fa-download"></i>
+                </a>
+                <a href="#" class="btn btn-tool btn-sm">
+                <i class="fas fa-bars"></i>
+                </a>
+            </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+            <table class="table table-striped table-valign-middle">
+                <thead>
+                <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Sales</th>
+                <th>More</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                    <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                    Some Product
+                </td>
+                <td>$13 USD</td>
+                <td>
+                    <small class="text-success mr-1">
+                    <i class="fas fa-arrow-up"></i>
+                    12%
+                    </small>
+                    12,000 Sold
+                </td>
+                <td>
+                    <a href="#" class="text-muted">
+                    <i class="fas fa-search"></i>
+                    </a>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                    Another Product
+                </td>
+                <td>$29 USD</td>
+                <td>
+                    <small class="text-warning mr-1">
+                    <i class="fas fa-arrow-down"></i>
+                    0.5%
+                    </small>
+                    123,234 Sold
+                </td>
+                <td>
+                    <a href="#" class="text-muted">
+                    <i class="fas fa-search"></i>
+                    </a>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                    Amazing Product
+                </td>
+                <td>$1,230 USD</td>
+                <td>
+                    <small class="text-danger mr-1">
+                    <i class="fas fa-arrow-down"></i>
+                    3%
+                    </small>
+                    198 Sold
+                </td>
+                <td>
+                    <a href="#" class="text-muted">
+                    <i class="fas fa-search"></i>
+                    </a>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                    Perfect Item
+                    <span class="badge bg-danger">NEW</span>
+                </td>
+                <td>$199 USD</td>
+                <td>
+                    <small class="text-success mr-1">
+                    <i class="fas fa-arrow-up"></i>
+                    63%
+                    </small>
+                    87 Sold
+                </td>
+                <td>
+                    <a href="#" class="text-muted">
+                    <i class="fas fa-search"></i>
+                    </a>
+                </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+
+    <div class="col-md-4">
+        <!-- Info Boxes Style 2 -->
+        <div class="info-box mb-3 bg-warning">
+            <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+
+            <div class="info-box-content">
+            <span class="info-box-text">Inventory</span>
+            <span class="info-box-number">5,200</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+        <div class="info-box mb-3 bg-success">
+            <span class="info-box-icon"><i class="far fa-heart"></i></span>
+
+            <div class="info-box-content">
+            <span class="info-box-text">Mentions</span>
+            <span class="info-box-number">92,050</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+        <div class="info-box mb-3 bg-danger">
+            <span class="info-box-icon"><i class="fas fa-cloud-download-alt"></i></span>
+
+            <div class="info-box-content">
+            <span class="info-box-text">Downloads</span>
+            <span class="info-box-number">114,381</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+        <div class="info-box mb-3 bg-info">
+            <span class="info-box-icon"><i class="far fa-comment"></i></span>
+
+            <div class="info-box-content">
+            <span class="info-box-text">Direct Messages</span>
+            <span class="info-box-number">163,921</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
