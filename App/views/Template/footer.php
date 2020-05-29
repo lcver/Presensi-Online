@@ -43,6 +43,7 @@
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
 <script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/toastr/toastr.min.js"></script>
+<script src="<?=BASEURL?>js/mainscript.js"></script>
 <script>
   function pieChart(api)
   {
