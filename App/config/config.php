@@ -1,7 +1,19 @@
 <?php
+/**
+ * Base URL
+ * @return URL
+ */
+$base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http';
+$base_url.= "://".$_SERVER['HTTP_HOST'];
+$base_url.= str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_NAME']);
+define('BASEURL', $base_url);
+
+/**
+ * Start Session
+ * 
+ * @start Session
+ */
 session_start();
-// url
-define('BASEURL','http://localhost/Presensi-Online/public/');
 
 
 $app_path = preg_split('@/@', str_replace($_SERVER['DOCUMENT_ROOT'], '', realpath(dirname(__FILE__))), NULL, PREG_SPLIT_NO_EMPTY);
