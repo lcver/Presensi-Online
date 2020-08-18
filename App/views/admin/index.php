@@ -37,22 +37,57 @@
     <!-- fix for small devices only -->
     <div class="clearfix hidden-md-up"></div>
 
-    <div class="col-12 col-sm-10 col-md-4">
+    <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box mb-3">
+    <?php if($data['set_sesi']!=null): ?>
+    <?php foreach ($data['set_sesi'] as $d): ?>
+        <span class="info-box-icon <?=$d['status']==1 ? "bg-gradient-dark" : "bg-success" ?> elevation-1"><i class="fas fa-clock"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text">
+                Sesi
+                <span class="text-bold"><?= $d['sesi'] ?></span>
+            </span>
+            <span class="info-box-number">
+                <?=date_format(date_create($d['waktu_mulai']), "h:i")." - ".date_format(date_create($d['waktu_selesai']), "h:i")?>
+                    <?php if($d['status']==1): ?>
+                    <button class="btn btn-primary btn-sm no-border p-1">Enable</button>
+                    <?php elseif($d['status']==2): ?>
+                    <button class="btn btn-danger btn-sm no-border p-1">disable</button>
+                    <?php endif?>
+                    <!-- <span class="bg-primary p-1 text-bold rounded">auto</span> -->
+            </span>
+        </div>
+        <!-- /.info-box-content -->
+    <?php endforeach?>
+    <?php else: ?>
         <span class="info-box-icon bg-success elevation-1"><i class="fas fa-clock"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text">
+                Sesi ~
+            </span>
+            <span class="info-box-number">
+                sesi tidak ditemukan
+            </span>
+        </div>
+        <!-- /.info-box-content -->
+    <?php endif?>
+    </div>
+    <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box mb-3">
+        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hourglass"></i></span>
 
         <div class="info-box-content">
-        <span class="info-box-text">Sesi</span>
-        <span class="info-box-number">
-            Asrama Al-qur'an
-            <button class="btn btn-danger btn-sm no-border p-1">disable</button>
-            <!-- <span class="bg-primary p-1 text-bold rounded">auto</span> -->
-        </span>
+        <span class="info-box-text">Waktu Aktivasi</span>
+        <span class="info-box-number">2,000</span>
         </div>
         <!-- /.info-box-content -->
     </div>
     <!-- /.info-box -->
     </div>
+    <!-- /.col -->
 </div>
 <!-- /.row -->
 

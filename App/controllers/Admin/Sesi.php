@@ -41,7 +41,7 @@ class Sesi extends Controller
             $res = $this->model('SesiModel')->update($id,['status'=>2]);
             if($res!==true) echo "gagal";
         }
-        header('location:'.BASEURL.'admin');
+        // header('location:'.BASEURL.'admin');
     }
 
     public function __setInactive(String $id)

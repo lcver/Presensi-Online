@@ -37,7 +37,11 @@ class JadwalModel extends Controller
                                                         ->fetch(['id'])
                                                         ->get();
                         break;
-                    
+                    case 'get_inactive_jadwal':
+                        $result = Database::table('tbpresensi_jadwal')
+                                                        ->where('status',1)
+                                                        ->get();
+                        break;
                     case 'get_active_jadwal':
                         $result = Database::table('tbpresensi_jadwal')
                                                         ->where('status',2)

@@ -17,12 +17,12 @@ class AdminController extends Controller
     }
 
     public function index()
-    {        
+    {
         /**
          * Tampil semua sesi
          */
-        $result = $this->model('SesiModel')->create();
-        $data['sesi'] = Helper::null_checker($result);
+        // $result = $this->model('SesiModel')->create();
+        // $data['sesi'] = Helper::null_checker($result);
 
         /**
          * Tampil sesi belum aktif
@@ -33,18 +33,18 @@ class AdminController extends Controller
         /**
          * Tampil Data Admin
          */
-        $result = $this->model('SuperadminModel')->show();
-        $data['dataadmin'] = Helper::null_checker($result);
+        // $result = $this->model('SuperadminModel')->show();
+        // $data['dataadmin'] = Helper::null_checker($result);
 
         // get id Jadwal
-        $res = $this->model('JadwalModel')->show('get_active_jadwal');
+        $res = $this->model('JadwalModel')->show('get_inactive_jadwal');
         // var_dump($res);die();
 
         /**
          * Show session ready to activated
          */
-        $result = $this->model('SesiModel')->show('get_active');
-        $data['activated'] = Helper::null_checker($result);
+        // $result = $this->model('SesiModel')->show('get_active');
+        // $data['activated'] = Helper::null_checker($result);
 
 
         $this->view('admin/index',$data,'admin');
@@ -146,43 +146,45 @@ class AdminController extends Controller
 
     public function countdown_jadwal()
     {
+
         // mengatur time zone untuk WIB.
         date_default_timezone_set("Asia/Jakarta");
 
-        $res = $this->model('SesiModel')->create();
+        $res = $this->model('SesiModel')->show("auto_sesi");
+        if($res != null){
+            $dateNow = mktime(date("H"), date("i"), date("s"),date("d"), date("m"), date("y"));
+            // foreach ($res as $d) {
+                // date
+                $day = self::dateCreateFormat($res['tanggal'],'d');
+                $month = self::dateCreateFormat($res['tanggal'],'m');
+                $year = self::dateCreateFormat($res['tanggal'],'y');
 
-        // var_dump($res);
+                // time start
+                $hour_start = self::dateCreateFormat($res['waktu_mulai'],'H');
+                $min_start = self::dateCreateFormat($res['waktu_mulai'],'i');
+                $sec_start = self::dateCreateFormat($res['waktu_mulai'],'s');
 
-        $dateNow = mktime(date("H"), date("i"), date("s"),date("d"), date("m"), date("y"));
-        foreach ($res as $d) {
-            // date
-            $day = self::dateCreateFormat($d['tanggal'],'d');
-            $month = self::dateCreateFormat($d['tanggal'],'m');
-            $year = self::dateCreateFormat($d['tanggal'],'y');
+                // time end
+                $hour_end = self::dateCreateFormat($res['waktu_selesai'],'H');
+                $min_end = self::dateCreateFormat($res['waktu_selesai'],'i');
+                $sec_end = self::dateCreateFormat($res['waktu_selesai'],'s');
 
-            // time start
-            $hour_start = self::dateCreateFormat($d['waktu_mulai'],'H');
-            $min_start = self::dateCreateFormat($d['waktu_mulai'],'i');
-            $sec_start = self::dateCreateFormat($d['waktu_mulai'],'s');
+                $dateSesiStart = mktime($hour_start,$min_start,$sec_start,$day,$month,$year);
+                $dateSesiEnd = mktime($hour_end,$min_end,$sec_end,$day,$month,$year);
 
-            // time end
-            $hour_end = self::dateCreateFormat($d['waktu_selesai'],'H');
-            $min_end = self::dateCreateFormat($d['waktu_selesai'],'i');
-            $sec_end = self::dateCreateFormat($d['waktu_selesai'],'s');
+                $setTimer = self::timer_zone($dateSesiStart,$dateNow);
+                $time = $setTimer['day']+$setTimer['hour']+$setTimer['minute']+$setTimer['sec'];
+                echo $setTimer['day']." hari ".$setTimer['hour'].":".$setTimer['minute'].":".$setTimer['sec'];
+                if($time < 0){
+                    $sesi = new \Admin\Sesi;
+                    $sesi->__setActive($res['id']);
+                }else{
+                    echo "Akan Berlangsung </br>";
+                }
 
-            $dateSesiStart = mktime($hour_start,$min_start,$sec_start,$day,$month,$year);
-            $dateSesiEnd = mktime($hour_end,$min_end,$sec_end,$day,$month,$year);
+                // echo "Sesi Akan dimulai dalam :".$setTimer['day'].' hari '.$setTimer['hour'].':'.$setTimer['minute'].':'.$setTimer['sec'] ;
 
-            $setTimer = self::timer_zone($dateSesiStart,$dateNow);
-            $time = $setTimer['day']+$setTimer['hour']+$setTimer['minute']+$setTimer['sec'];
-            if($time < 0){
-                echo "Sudah Terlewat </br>";
-            }else{
-                echo "Akan Berlangsung </br>";
-            }
-
-            // echo "Sesi Akan dimulai dalam :".$setTimer['day'].' hari '.$setTimer['hour'].':'.$setTimer['minute'].':'.$setTimer['sec'] ;
-
+            // }
         }
         
         // mencari mktime untuk current time
@@ -212,7 +214,7 @@ class AdminController extends Controller
         $date['minute'] = floor($left/60);
 
         $left = $left % 60;
-        $date['sec'] = floor($left/1);
+        $date['sec'] = floor($left);
         return $date;
     }
 }

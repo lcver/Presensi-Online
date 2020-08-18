@@ -45,7 +45,7 @@ class SesiModel extends Controller
                     case 'set_active':
                         $result = Database::table('tbpresensi_sesi')
                                                         ->join('tbpresensi_jadwal')
-                                                        ->on('tbpresensi_sesi.idJadwal','tbpresensi_jadwal.id and tbpresensi_jadwal.status=2 and tbpresensi_sesi.status=1')
+                                                        ->on('tbpresensi_sesi.idJadwal','tbpresensi_jadwal.id and tbpresensi_jadwal.status=2')
                                                         ->orderBy('tbpresensi_jadwal.tanggal asc, waktu_mulai','asc')
                                                         ->fetch(['tbpresensi_sesi.*','tbpresensi_jadwal.tanggal'])
                                                         ->get();
@@ -60,8 +60,14 @@ class SesiModel extends Controller
                                                     ->where('idJadwal',$data)
                                                     ->get();
                         break;
+                    case 'auto_sesi':
+                        $result = Database::table('tbpresensi_sesi')
+                                                    ->join('tbpresensi_jadwal')
+                                                    ->on('tbpresensi_sesi.idJadwal',"tbpresensi_jadwal.id and tbpresensi_jadwal.status=2 and tbpresensi_sesi.status=1 and tbpresensi_sesi.auto_active='active'")
+                                                    ->orderBy('tbpresensi_jadwal.tanggal asc, waktu_mulai','asc')
+                                                    ->fetch(['tbpresensi_sesi.*','tbpresensi_jadwal.tanggal'])
+                                                    ->get();
                         break;
-                    
                     default:
                         $result = [];
                         break;
