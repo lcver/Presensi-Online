@@ -4,10 +4,11 @@
         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
         <div class="info-box-content">
-        <span class="info-box-text">Automatis Sistem</span>
+        <span class="info-box-text">Otomatis Sesi</span>
         <span class="info-box-number">
             click to 
-            <button class="btn btn-primary btn-sm no-border p-1">Enable</button>
+            <!-- <button class="btn btn-primary btn-sm no-border p-1">Enable</button> -->
+            <button class="btn btn-danger btn-sm no-border p-1">Disable</button>
             
         </span>
         </div>
@@ -15,65 +16,68 @@
     </div>
     <!-- /.info-box -->
     </div>
-    <!-- /.col -->
-    <div class="col-12 col-sm-6 col-md-4">
-    <div class="info-box mb-3">
-        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-calendar-alt"></i></span>
-
-        <div class="info-box-content">
-        <span class="info-box-text">Jadwal</span>
-        <span class="info-box-number">
-            14/06/2020
-            <button class="btn btn-danger btn-sm no-border p-1">disable</button>
-            <!-- <span class="bg-primary p-1 text-bold rounded">auto</span> -->
-        </span>
-        </div>
-        <!-- /.info-box-content -->
-    </div>
-    <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
 
     <!-- fix for small devices only -->
     <div class="clearfix hidden-md-up"></div>
 
     <div class="col-12 col-sm-6 col-md-4">
-    <div class="info-box mb-3">
-    <?php if($data['set_sesi']!=null): ?>
-    <?php foreach ($data['set_sesi'] as $d): ?>
-        <span class="info-box-icon <?=$d['status']==1 ? "bg-gradient-dark" : "bg-success" ?> elevation-1"><i class="fas fa-clock"></i></span>
-        <div class="info-box-content">
-            <span class="info-box-text">
-                Sesi
-                <span class="text-bold"><?= $d['sesi'] ?></span>
-            </span>
-            <span class="info-box-number">
-                <?=date_format(date_create($d['waktu_mulai']), "h:i")." - ".date_format(date_create($d['waktu_selesai']), "h:i")?>
-                    <?php if($d['status']==1): ?>
-                    <button class="btn btn-primary btn-sm no-border p-1">Enable</button>
-                    <?php elseif($d['status']==2): ?>
-                    <button class="btn btn-danger btn-sm no-border p-1">disable</button>
-                    <?php endif?>
-                    <!-- <span class="bg-primary p-1 text-bold rounded">auto</span> -->
-            </span>
+        <div class="info-box mb-3">
+        <?php if($data['set_sesi']!=null): ?>
+        <?php foreach ($data['set_sesi'] as $d): ?>
+            <span class="info-box-icon <?=$d['status']==1 ? "bg-gradient-dark" : "bg-success" ?> elevation-1"><i class="fas fa-clock"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">
+                    Sesi
+                    <span class="text-bold"><?= $d['sesi'] ?></span>
+                </span>
+                <span class="info-box-number">
+                    <?=date_format(date_create($d['waktu_mulai']), "h:i")." - ".date_format(date_create($d['waktu_selesai']), "h:i")?>
+                        <?php if($d['status']==1): ?>
+                        <!-- <button class="btn btn-primary btn-sm no-border p-1">Enable</button> -->
+                        <span class="bg-info p-1 rounded">auto</span>
+                        <?php elseif($d['status']==2): ?>
+                        <button class="btn btn-danger btn-sm no-border p-1">disable</button>
+                        <?php endif?>
+                        <!-- <span class="bg-primary p-1 text-bold rounded">auto</span> -->
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        <?php endforeach?>
+        <?php else: ?>
+            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-clock"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">
+                    Sesi ~
+                </span>
+                <span class="info-box-number">
+                    sesi tidak ditemukan
+                </span>
+            </div>
+            <!-- /.info-box-content -->
+        <?php endif?>
         </div>
-        <!-- /.info-box-content -->
-    <?php endforeach?>
-    <?php else: ?>
-        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-clock"></i></span>
-        <div class="info-box-content">
-            <span class="info-box-text">
-                Sesi ~
-            </span>
+        <!-- /.info-box -->
+    </div>
+
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-calendar-alt"></i></span>
+
+            <div class="info-box-content">
+            <span class="info-box-text">Jadwal</span>
             <span class="info-box-number">
-                sesi tidak ditemukan
+                14/06/2020
+                <!-- <span class="text-bold">Tidak Ada Jadwal Aktif</span> -->
+                <!-- <button class="btn btn-danger btn-sm no-border p-1">disable</button> -->
+                <!-- <span class="bg-primary p-1 text-bold rounded">auto</span> -->
             </span>
+            </div>
+            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box-content -->
-    <?php endif?>
+        <!-- /.info-box -->
     </div>
-    <!-- /.info-box -->
-    </div>
+    <!-- /.col -->
 </div>
 <!-- /.row -->
 
