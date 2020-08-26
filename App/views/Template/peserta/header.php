@@ -14,9 +14,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- favicon -->
   <link rel="shortcut icon" href="<?=BASEURL?>img/logoPPG.jpeg" type="image/x-icon">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?=BASEURL?>vendor/almasaeed2010/adminlte/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?=BASEURL?>css/mainstyle.css">
   <!-- Google Font: Source Sans Pro -->
   <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->

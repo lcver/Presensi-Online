@@ -11,10 +11,10 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/adminlte.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/dist/js/adminlte.min.js"></script>
 </body>
 </html>

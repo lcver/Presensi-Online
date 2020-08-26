@@ -20,29 +20,29 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <!-- <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script> -->
 <!-- jQuery -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/chart.js/Chart.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/chart.js/Chart.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/adminlte.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/dist/js/demo.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/dist/js/demo.js"></script>
 <!-- SweetAlert2 -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
-<script src="<?=BASEPATH?>vendor/almasaeed2010/adminlte/plugins/toastr/toastr.min.js"></script>
+<script src="<?=BASEURL?>vendor/almasaeed2010/adminlte/plugins/toastr/toastr.min.js"></script>
 <script src="<?=BASEURL?>js/mainscript.js"></script>
 <script>
   function pieChart(api)

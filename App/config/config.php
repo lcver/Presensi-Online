@@ -16,11 +16,12 @@ define('BASEURL', $base_url);
 session_start();
 
 
-$app_path = preg_split('@/@', str_replace($_SERVER['DOCUMENT_ROOT'], '', realpath(dirname(__FILE__))), NULL, PREG_SPLIT_NO_EMPTY);
+$app_path = realpath(dirname(__FILE__));
+$app_path = str_replace("\\",'/',$app_path);
+// $app_path = str_replace($_SERVER['DOCUMENT_ROOT'],'',$app_path);
 $app_path = preg_replace('/config/', '', $app_path);
-$app_path = preg_replace('/App\\\/', '', $app_path);
-// define('APPPATH', $app_path[0]);
-define('BASEPATH',"/".$app_path[0]."/");
+$app_path = str_replace("App/",'',$app_path);
+define('BASEPATH',$app_path);
 
 // db
 define('DBHOST', 'localhost');
