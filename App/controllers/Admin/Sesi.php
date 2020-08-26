@@ -47,7 +47,7 @@ class Sesi extends Controller
     public function __setInactive(String $id)
     {
         if(isset($_SESSION['presensi_adminsession'])){
-            $res = $this->model('SesiModel')->update($id,['status'=>3]);
+            $res = $this->model('SesiModel')->update($id,['status'=>1]);
             if($res!==true):
                 echo "gagal";
             else:

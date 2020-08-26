@@ -82,7 +82,7 @@ class HomeController extends Controller
         $now = strtotime('now');
 
         $distance = $resDate - $now;
-        var_dump($distance);
+        // var_dump($distance);
 
         if($distance < 1)
         {
