@@ -15,23 +15,26 @@ class RekapController extends Controller
         $jadwal = Helper::null_checker($result);
         
         $count = [];
-        foreach ($jadwal as $d) {
-            $result = $this->model('PesertaModel')->show('countPeserta_by_jadwal',$d['id']);
-            $aggregates = [];
-
-            foreach ($tpq as $dd) {
-                $data = $this->model('PesertaModel')->show('countPeserta_by_tpq',['tpq' => $dd['id'],'jadwal' => $d['id']]);
-                $aggregates[] = $data['jumlah'];
-            }
-            
-            $min = MIN($aggregates);
-            $max = MAX($aggregates);
-            $combine = ['min'=>$min,'max'=>$max];
-            
-            if(!empty($result['total']) )
-            {
-                $result = array_merge($result,$combine);
-                $count[] = $result;
+        if(!is_null($jadwal))
+        {
+            foreach ($jadwal as $d) {
+                $result = $this->model('PesertaModel')->show('countPeserta_by_jadwal',$d['id']);
+                $aggregates = [];
+    
+                foreach ($tpq as $dd) {
+                    $data = $this->model('PesertaModel')->show('countPeserta_by_tpq',['tpq' => $dd['id'],'jadwal' => $d['id']]);
+                    $aggregates[] = $data['jumlah'];
+                }
+                
+                $min = MIN($aggregates);
+                $max = MAX($aggregates);
+                $combine = ['min'=>$min,'max'=>$max];
+                
+                if(!empty($result['total']) )
+                {
+                    $result = array_merge($result,$combine);
+                    $count[] = $result;
+                }
             }
         }
         // var_dump($count);
