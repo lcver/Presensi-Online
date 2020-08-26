@@ -1,3 +1,20 @@
+function baseUrl()
+{
+    // var getUrl = window.location;
+    // var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
+    var pathparts = location.pathname.split('/');
+    if (location.host == 'localhost') {
+        var baseUrl = location.origin+'/'+pathparts[1].trim('/'); // http://localhost/myproject/
+    } else if(location.host.match(/192.168/) != null) {
+        var baseUrl = location.origin+'/'+pathparts[1].trim('/'); // http://localhost/myproject/
+    } else{
+        var baseUrl = location.origin; // http://stackoverflow.com
+    }
+
+    return baseUrl;
+}
+
 $(function () {
 
   'use strict'
@@ -62,4 +79,40 @@ $(function () {
   //---------------------------
   //- END MONTHLY SALES CHART -
   //---------------------------
+});
+
+function AJAX(data, req, redirect)
+{
+  var notif;
+  $.ajax({
+    method: 'POST',
+    url : req,
+    data: data
+  })
+    .done(function() {
+      window.location.replace(redirect);
+    })
+}
+
+var btnAuto = $('#btnAuto');
+var enSesi = $('#enSesi');
+var disSesi = $('#disSesi');
+
+// enAuto.on('click', function() {
+//   console.log('auto-click');
+// })
+
+enSesi.on('click', function() {
+  data = {id:enSesi.attr('data')};
+  AJAX(data, baseUrl()+'/public/admin/sesi/aktivasi', baseUrl()+"/public/admin/")
+})
+
+disSesi.on('click', function() {
+  data = {id:disSesi.attr('data')};
+  AJAX(data, baseUrl()+'/public/admin/sesi/nonaktif', baseUrl()+"/public/admin/")
+})
+
+btnAuto.on('click', function() {
+  data = {id:btnAuto.attr('data')};
+  AJAX(data, baseUrl()+'/public/admin/sesi/setAuto', baseUrl()+"/public/admin/")
 })

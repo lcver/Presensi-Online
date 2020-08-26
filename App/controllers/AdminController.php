@@ -37,8 +37,8 @@ class AdminController extends Controller
         // $data['dataadmin'] = Helper::null_checker($result);
 
         // get id Jadwal
-        $res = $this->model('JadwalModel')->show('get_inactive_jadwal');
-        // var_dump($res);die();
+        $res = $this->model('JadwalModel')->show('get_active_jadwal');
+        $data['jadwal'] = Helper::null_checker($res);
 
         /**
          * Show session ready to activated
@@ -118,8 +118,8 @@ class AdminController extends Controller
 
                 break;
             case 'aktivasi':
-                if(isset($_POST['presensi_jadwal'])):
-                    $sesi->__setActive($_POST['presensi_jadwal']);
+                if(isset($_POST['id'])):
+                    $sesi->__setActive($_POST['id']);
                 endif;
                 break;
             case 'nonaktif':

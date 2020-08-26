@@ -55,6 +55,7 @@ class SesiModel extends Controller
                                                         ->where('id',$data)
                                                         ->orderBy('waktu_mulai','asc')
                                                         ->get();
+                        break;
                     case 'get_by_jadwal':
                         $result = Database::table('tbpresensi_sesi')
                                                     ->where('idJadwal',$data)

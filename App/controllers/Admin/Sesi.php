@@ -65,7 +65,7 @@ class Sesi extends Controller
             $data = $res['auto_active']=='inactive' ? 'active' : 'inactive';
             $data = ['auto_active'=>$data];
 
-            $res = $this->model('SuperadminModel')->update($id,$data);
+            $res = $this->model('SesiModel')->update($id,$data);
             if($res!==true){
                 echo "isn't switch";
             }
