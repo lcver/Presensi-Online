@@ -15,10 +15,14 @@ class HomeController extends Controller
         $result = $this->model('SesiModel')->show('get_active');
         if(!is_null($result))
         {
-            if($this->countdown($result['waktu_mulai'])):
-                if($this->countdown($result['waktu_selesai']) == false)
-                    $data['sesi'] = Helper::null_checker($result);
-            endif;
+            if($result['auto_active'] == "active"){
+                if($this->countdown($result['waktu_mulai'])):
+                    if($this->countdown($result['waktu_selesai']) == false)
+                        $data['sesi'] = Helper::null_checker($result);
+                endif;
+            } else {
+                $data['sesi'] = Helper::null_checker($result);
+            }
         }
 
         
@@ -74,13 +78,24 @@ class HomeController extends Controller
         }
 
         header('location:'.BASEURL);
-    }   
+    }
+
+    /**
+     *  Count Down Timer
+     * 
+     * @param Int $Time
+     * @param Int $SpendTime && (minute)
+     * 
+     * @return Boolean
+     */
     
-    public function countdown($time)
+    public function countdown($time, $spendTime = 0)
     {
         date_default_timezone_set("Asia/Jakarta");
+
         
-        $resDate = strtotime($time);
+        
+        $resDate = $spendTime <> 0 ? strtotime($time) - $spendTime : strtotime($time);
         $now = strtotime('now');
 
         $distance = $resDate - $now;
