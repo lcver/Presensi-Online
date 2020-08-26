@@ -13,13 +13,7 @@ class HomeController extends Controller
          * get sesi active and jadwal active
          */
         $result = $this->model('SesiModel')->show('get_active');
-        if(!is_null($result))
-        {
-            if($this->countdown($result['waktu_mulai'])):
-                if($this->countdown($result['waktu_selesai']) == false)
-                    $data['sesi'] = Helper::null_checker($result);
-            endif;
-        }
+        
 
         
         // $this->view('load/index',[],'self');
@@ -78,6 +72,8 @@ class HomeController extends Controller
     
     public function countdown($time)
     {
+        date_default_timezone_set("Asia/Jakarta");
+        
         $resDate = strtotime($time);
         $now = strtotime('now');
 
