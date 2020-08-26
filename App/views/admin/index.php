@@ -1,31 +1,31 @@
 <div class="row">
     <div class="col-12 col-sm-6 col-md-4">
-    <div class="info-box">
-        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+        <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
-        <div class="info-box-content">
-        <span class="info-box-text">Otomatis Sesi</span>
-        <span class="info-box-number">
-            <?php if(!is_null($data['set_sesi'])) : ?>
-                click to 
-                <?php foreach ($data['set_sesi'] as $d) : ?>
-                    <button class="btn <?=$d['auto_active'] == "active" ? "btn-danger" : "btn-success"?> btn-sm no-border p-1" id="btnAuto" data="<?=$d['id']?>">
-                    <?php if($d['auto_active'] == "active") : ?>
-                        Disable
-                    <?php else: ?>
-                        Enable
-                    <?php endif;?>
-                    </button>
-                <?php endforeach; ?>
-            <?php else: ?>
-                sesi tidak ditemukan
-            <?php endif; ?>
-            
-        </span>
+            <div class="info-box-content">
+            <span class="info-box-text">Otomatis Sesi</span>
+            <span class="info-box-number">
+                <?php if(!is_null($data['set_sesi'])) : ?>
+                    click to 
+                    <?php foreach ($data['set_sesi'] as $d) : ?>
+                        <button class="btn <?=$d['auto_active'] == "active" ? "btn-danger" : "btn-success"?> btn-sm no-border p-1" id="btnAuto" data="<?=$d['id']?>">
+                        <?php if($d['auto_active'] == "active") : ?>
+                            Disable
+                        <?php else: ?>
+                            Enable
+                        <?php endif;?>
+                        </button>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    sesi tidak ditemukan
+                <?php endif; ?>
+                
+            </span>
+            </div>
+            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box-content -->
-    </div>
-    <!-- /.info-box -->
+        <!-- /.info-box -->
     </div>
 
     <!-- fix for small devices only -->
@@ -109,6 +109,7 @@
     <div class="card">
         <div class="card-header">
         <h5 class="card-title">Rekap Laporan Presensi</h5>
+        <span class="bg-danger p-1 ml-2 rounded">prototype</span>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -188,6 +189,7 @@
         <div class="card">
             <div class="card-header border-0">
             <h3 class="card-title">Laporan Pimpinan Anak Cabang</h3>
+            <span class="bg-danger p-1 ml-2 rounded">prototype</span>
             <div class="card-tools">
                 <a href="#" class="btn btn-tool btn-sm">
                 <i class="fas fa-download"></i>
@@ -290,7 +292,7 @@
             <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
             <div class="info-box-content">
-            <span class="info-box-text">Inventory</span>
+            <span class="info-box-text">Inventory <span class="bg-white text-bold p-1 ml-2 rounded">prototype</span></span>
             <span class="info-box-number">5,200</span>
             </div>
             <!-- /.info-box-content -->
@@ -300,7 +302,7 @@
             <span class="info-box-icon"><i class="far fa-heart"></i></span>
 
             <div class="info-box-content">
-            <span class="info-box-text">Mentions</span>
+            <span class="info-box-text">Mentions <span class="bg-white text-bold p-1 ml-2 rounded">prototype</span></span>
             <span class="info-box-number">92,050</span>
             </div>
             <!-- /.info-box-content -->
@@ -310,7 +312,7 @@
             <span class="info-box-icon"><i class="fas fa-cloud-download-alt"></i></span>
 
             <div class="info-box-content">
-            <span class="info-box-text">Downloads</span>
+            <span class="info-box-text">Downloads <span class="bg-white text-bold p-1 ml-2 rounded">prototype</span></span>
             <span class="info-box-number">114,381</span>
             </div>
             <!-- /.info-box-content -->
@@ -320,7 +322,7 @@
             <span class="info-box-icon"><i class="far fa-comment"></i></span>
 
             <div class="info-box-content">
-            <span class="info-box-text">Direct Messages</span>
+            <span class="info-box-text">Direct Messages <span class="bg-white text-bold p-1 ml-2 rounded">prototype</span></span>
             <span class="info-box-number">163,921</span>
             </div>
             <!-- /.info-box-content -->
