@@ -43,14 +43,14 @@
                 </span>
                 <span class="info-box-number">
                     <?=date_format(date_create($d['waktu_mulai']), "h:i")." - ".date_format(date_create($d['waktu_selesai']), "h:i")?>
-                        <?php if($d['status']==1): ?>
-                            <?php if($d['auto_active']=="active") : ?>
-                                <span class="bg-info p-1 rounded">auto</span>
-                            <?php else : ?>
+                        <?php if($d['auto_active']=="active") : ?>
+                            <span class="bg-info p-1 rounded">auto</span>
+                        <?php else : ?>
+                            <?php if($d['status']==1): ?>
                                 <button class="btn btn-primary btn-sm no-border p-1" id="enSesi" data="<?=$d['id']?>">Enable</button>
+                            <?php elseif($d['status']==2): ?>
+                                <button class="btn btn-danger btn-sm no-border p-1" id="disSesi" data="<?=$d['id']?>">disable</button>
                             <?php endif; ?>
-                        <?php elseif($d['status']==2): ?>
-                        <button class="btn btn-danger btn-sm no-border p-1" id="disSesi" data="<?=$d['id']?>">disable</button>
                         <?php endif?>
                         <!-- <span class="bg-primary p-1 text-bold rounded">auto</span> -->
                 </span>

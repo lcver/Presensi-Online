@@ -13,7 +13,13 @@ class HomeController extends Controller
          * get sesi active and jadwal active
          */
         $result = $this->model('SesiModel')->show('get_active');
-        $data['sesi'] = Helper::null_checker($result);
+        if(!is_null($result))
+        {
+            if($this->countdown($result['waktu_mulai'])):
+                if($this->countdown($result['waktu_selesai']) == false)
+                    $data['sesi'] = Helper::null_checker($result);
+            endif;
+        }
 
         
         // $this->view('load/index',[],'self');
@@ -69,4 +75,20 @@ class HomeController extends Controller
 
         header('location:'.BASEURL);
     }   
+    
+    public function countdown($time)
+    {
+        $resDate = strtotime($time);
+        $now = strtotime('now');
+
+        $distance = $resDate - $now;
+        var_dump($distance);
+
+        if($distance < 1)
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

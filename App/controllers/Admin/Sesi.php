@@ -62,8 +62,12 @@ class Sesi extends Controller
             $res = $this->model('SesiModel')->show('byId',$id);
 
             // check last status
-            $data = $res['auto_active']=='inactive' ? 'active' : 'inactive';
-            $data = ['auto_active'=>$data];
+            $autoActive = $res['auto_active']=='inactive' ? 'active' : 'inactive';
+            $status = $res['auto_active']=='inactive' ? 2 : 1;
+            $data = [
+                'auto_active'=>$autoActive,
+                'status'=>$status
+            ];
 
             $res = $this->model('SesiModel')->update($id,$data);
             if($res!==true){
