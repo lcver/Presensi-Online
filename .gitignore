@@ -5,4 +5,4 @@
 # ignore a file type
 
 # add an exception (using !) to the preceding rule to track a specific file
-/vendor/
+public/vendor/
