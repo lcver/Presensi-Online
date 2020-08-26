@@ -93,9 +93,9 @@ class HomeController extends Controller
     {
         date_default_timezone_set("Asia/Jakarta");
 
+        $spendTime = $spendTime * 60;
         
-        
-        $resDate = $spendTime <> 0 ? strtotime($time) - $spendTime : strtotime($time);
+        $resDate = strtotime($time) - $spendTime;
         $now = strtotime('now');
 
         $distance = $resDate - $now;
