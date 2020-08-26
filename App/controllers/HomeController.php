@@ -17,7 +17,7 @@ class HomeController extends Controller
         {
             if($result['auto_active'] == "active"){
                 if($this->countdown($result['waktu_mulai'])):
-                    if($this->countdown($result['waktu_selesai']) == false)
+                    if($this->countdown($result['waktu_selesai'], 60) == false)
                         $data['sesi'] = Helper::null_checker($result);
                 endif;
             } else {
@@ -95,7 +95,7 @@ class HomeController extends Controller
 
         $spendTime = $spendTime * 60;
         
-        $resDate = strtotime($time) - $spendTime;
+        $resDate = strtotime($time) + $spendTime;
         $now = strtotime('now');
 
         $distance = $resDate - $now;
