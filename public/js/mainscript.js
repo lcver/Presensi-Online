@@ -5,9 +5,9 @@ function baseUrl()
 
     var pathparts = location.pathname.split('/');
     if (location.host == 'localhost') {
-        var baseUrl = location.origin+'/'+pathparts[1].trim('/'); // http://localhost/myproject/
+        var baseUrl = location.origin+'/'+pathparts[1]+'/'+pathparts[2].trim('/'); // http://localhost/myproject/
     } else if(location.host.match(/192.168/) != null) {
-        var baseUrl = location.origin+'/'+pathparts[1].trim('/'); // http://localhost/myproject/
+        var baseUrl = location.origin+'/'+pathparts[1]+'/'+pathparts[2].trim('/'); // http://localhost/myproject/
     } else{
         var baseUrl = location.origin; // http://stackoverflow.com
     }
@@ -104,15 +104,15 @@ var disSesi = $('#disSesi');
 
 enSesi.on('click', function() {
   data = {id:enSesi.attr('data')};
-  AJAX(data, baseUrl()+'/public/admin/sesi/aktivasi', baseUrl()+"/public/admin/")
+  AJAX(data, baseUrl()+'/admin/sesi/aktivasi', baseUrl()+"/admin/")
 })
 
 disSesi.on('click', function() {
   data = {id:disSesi.attr('data')};
-  AJAX(data, baseUrl()+'/public/admin/sesi/nonaktif', baseUrl()+"/public/admin/")
+  AJAX(data, baseUrl()+'/admin/sesi/nonaktif', baseUrl()+"/admin/")
 })
 
 btnAuto.on('click', function() {
   data = {id:btnAuto.attr('data')};
-  AJAX(data, baseUrl()+'/public/admin/sesi/setAuto', baseUrl()+"/public/admin/")
+  AJAX(data, baseUrl()+'/admin/sesi/setAuto', baseUrl()+"/admin/")
 })
