@@ -30,6 +30,7 @@ class PesertaModel extends Controller
                     case 'get_by_id_tpq_jadwal':
                         $result = Database::table('tbpresensi_peserta')
                                                         ->raw('idTpq='.$cond['id'].' and idJadwal='.$cond['idJadwal'])
+                                                        ->orderBy("date(curent_timestamp)","desc")
                                                         ->get();
                         break;
                     case 'filtering' :
